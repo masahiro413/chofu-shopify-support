@@ -6,6 +6,7 @@ import {
   CONTACT_EMAIL,
   DIAGNOSIS_MAILTO,
   OWNER_NAME,
+  GITHUB_URL,
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_URL,
@@ -48,6 +49,10 @@ const situations = [
   {
     title: "WordPressやEC-CUBEで売っている",
     body: "PHPやプラグインの更新、サーバーの管理から手が離れます。セキュリティの考え方は下で詳しく書いています。",
+  },
+  {
+    title: "海外のお客さんにも売りたい",
+    body: "円とドルなどで値段を表示し、英語のページと海外への送料を整えます。NEKOHAMAで実際に設定してきた内容です。",
   },
   {
     title: "Instagramで注文を受けている",
@@ -103,6 +108,10 @@ const services = [
     items: ["BASE・カラーミー・STORESから", "WordPress・EC-CUBEから", "商品と顧客の情報を引き継ぎ"],
   },
   {
+    group: "海外へ売る",
+    items: ["円・ドルなど多通貨での表示", "英語のページづくり", "海外配送と国ごとの送料の設定"],
+  },
+  {
     group: "続ける",
     items: [
       "新商品の登録や特集の差し替え",
@@ -156,7 +165,7 @@ const jsonLd = {
   description: SITE_DESCRIPTION,
   url: SITE_URL,
   email: CONTACT_EMAIL,
-  founder: { "@type": "Person", name: OWNER_NAME },
+  founder: { "@type": "Person", name: OWNER_NAME, sameAs: [GITHUB_URL] },
   areaServed: ["東京都調布市", "東京都世田谷区", "神奈川県川崎市", "日本"],
   address: { "@type": "PostalAddress", addressLocality: "調布市", addressRegion: "東京都", addressCountry: "JP" },
 };
@@ -281,7 +290,7 @@ export default function Home() {
       <section className="border-t border-rule bg-sheet">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
           <SectionTitle>こんなお店から、相談を受けています</SectionTitle>
-          <div className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
+          <div className="mt-12 grid gap-10 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
             {situations.map((s) => (
               <div key={s.title} className="border-l-[3px] border-brand pl-5">
                 <h3 className="text-lg font-bold">{s.title}</h3>
@@ -371,7 +380,7 @@ export default function Home() {
       {/* できること */}
       <section className="mx-auto max-w-6xl px-5 py-24 sm:px-8">
         <SectionTitle>お手伝いできること</SectionTitle>
-        <div className="mt-12 grid gap-10 md:grid-cols-3">
+        <div className="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           {services.map((s) => (
             <div key={s.group} className="border-t-2 border-ink pt-5">
               <h3 className="text-xl font-bold">{s.group}</h3>
@@ -435,6 +444,18 @@ export default function Home() {
               公開後は受注やお客さま対応をしながら、GA4とShopifyの数字を見て改善してきました。固定費と変動費を分けて損益分岐点を確かめるなど、お店の数字を一緒に見ながら、無理なく続けられる運営を考えます。
             </p>
             <p>制作中は毎週、進み具合をご報告します。</p>
+            <p>
+              これまでに書いたコードは
+              <a
+                href={GITHUB_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mx-1 font-bold text-brand underline underline-offset-4 hover:text-brand-strong"
+              >
+                GitHub
+              </a>
+              で公開しています。
+            </p>
           </div>
         </div>
       </section>
@@ -487,7 +508,12 @@ export default function Home() {
           <span>
             {SITE_NAME}（{AREA}）
           </span>
-          <span>© {SITE_NAME}</span>
+          <span>
+            <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-ink">
+              GitHub
+            </a>
+            <span className="mx-3" aria-hidden="true">/</span>© {SITE_NAME}
+          </span>
         </div>
       </footer>
     </main>

@@ -22,3 +22,5 @@ export const DIAGNOSIS_MAILTO = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComp
 )}&body=${encodeURIComponent(
   "お店（またはSNS）のURL：\nお名前：\n気になっていること（任意）：\n",
 )}`;
+
+export const GITHUB_URL = "https://github.com/masahiro413";
