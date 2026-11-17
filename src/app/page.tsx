@@ -532,7 +532,7 @@ export default function Home() {
             fill
             sizes="100vw"
             placeholder="blur"
-            className="-z-10 object-cover object-[50%_35%] brightness-110 contrast-110 saturate-[1.35]"
+            className="-z-10 object-cover object-[50%_92%] brightness-110 contrast-110 saturate-[1.35]"
           />
           <dl className="mx-auto grid w-full max-w-[1100px] gap-4 px-5 py-16 sm:grid-cols-3 sm:px-8">
             {[
