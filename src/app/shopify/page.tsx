@@ -82,9 +82,9 @@ export default function ShopifyPage() {
           src={nightImage}
           alt=""
           fill
-          sizes="100vw"
+          sizes="(max-width: 768px) 400vw, 100vw"
           placeholder="blur"
-          className="-z-10 object-cover object-[50%_70%] brightness-110 contrast-110 saturate-[1.3]"
+          className="-z-10 object-cover object-[50%_85%] brightness-110 contrast-105 saturate-[1.2]"
         />
         <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-b from-[#151a1b] via-transparent via-40% to-black/40" />
         <h2 className="mx-auto max-w-3xl text-center text-[2rem] font-semibold [text-shadow:0_2px_16px_rgba(0,0,0,0.6)] sm:text-5xl">
@@ -92,7 +92,7 @@ export default function ShopifyPage() {
         </h2>
         <dl className="mx-auto mt-14 grid max-w-[1100px] gap-4 sm:grid-cols-3">
           {numbers.map((n) => (
-            <div key={n.value} className="rounded-[28px] bg-black/45 px-8 py-10 text-center ring-1 ring-white/15 backdrop-blur-xl">
+            <div key={n.value} className="rounded-[28px] bg-black/35 px-8 py-10 text-center ring-1 ring-white/20 backdrop-blur-md">
               <dt className="sr-only">{n.label}</dt>
               <dd className="text-[2.75rem] font-semibold whitespace-nowrap text-[#5ce65c] lg:text-[3.25rem]">{n.value}</dd>
               <dd className="mt-3 text-white/85">{n.label}</dd>
