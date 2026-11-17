@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import pineappleImage from "../../../public/works/pineapple.png";
 import { shopifyFeatures } from "@/lib/shopify";
 import { DIAGNOSIS_MAILTO, LINE_URL, SITE_NAME } from "@/lib/site";
 import { SiteFooter, SiteHeader } from "../site-chrome";
@@ -40,8 +42,9 @@ export default function ShopifyPage() {
       <SiteHeader />
 
       {/* はじめに */}
-      <section className="bg-[#151a1b] px-5 pt-32 pb-24 text-white sm:pt-40 sm:pb-32">
-        <div className="mx-auto max-w-[1100px]">
+      <section className="overflow-hidden bg-[#151a1b] px-5 pt-32 pb-24 text-white sm:pt-40 sm:pb-32">
+        <div className="mx-auto grid max-w-[1100px] items-center gap-12 lg:grid-cols-[1.3fr_1fr]">
+          <div>
           <nav aria-label="パンくずリスト" className="text-sm text-white/60">
             <a href="/" className="hover:underline">
               {SITE_NAME}
@@ -56,6 +59,19 @@ export default function ShopifyPage() {
           <p className="mt-8 max-w-2xl text-lg text-white/80 sm:text-xl">
             Shopify（ショッピファイ）は、カナダのShopify Inc.が運営する、世界最大級のネットショップの仕組みです。お店のサイトづくりから、注文・在庫の管理、決済、配送、集客まで、ひとつの管理画面でできます。
           </p>
+          </div>
+          {/* 商品写真の見本。背景と手を消して切り抜いたパイナップル */}
+          <div className="relative mx-auto">
+            <div aria-hidden="true" className="absolute inset-x-0 bottom-[10%] mx-auto h-1/2 w-[90%] rounded-full bg-[#5ce65c]/20 blur-3xl" />
+            <Image
+              src={pineappleImage}
+              alt="背景を消して切り抜いた、丸ごとのパイナップル"
+              priority
+              sizes="(min-width: 1024px) 210px, 160px"
+              className="relative mx-auto h-[440px] w-auto lg:h-[560px]"
+            />
+            <p className="relative mt-4 text-center text-sm text-white/55">背景を消した商品写真の見本</p>
+          </div>
         </div>
       </section>
 
