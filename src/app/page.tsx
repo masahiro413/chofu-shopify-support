@@ -291,7 +291,7 @@ export default function Home() {
             </span>
           </h1>
           <p className="mt-6 max-w-[34em] text-[1.05rem] text-ink-soft">
-            お店のURLを送ってください。直したほうがいい所を3つ、診断票にしてお返しします。
+            お店のURLを送ってください。直したほうがいい所を3つ、診断票にしてお返しします。<br />
             はじめまして、{OWNER_NAME}です。抹茶のオンラインストアを立ち上げから運営まで手がけてきました。依頼するかどうかは、診断票を読んでから決めて大丈夫です。
           </p>
           <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
