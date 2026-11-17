@@ -4,7 +4,7 @@ import nekohamaImage from "../../public/works/nekohama.jpg";
 import hanachozuImage from "../../public/works/hanachozu.jpg";
 import brickImage from "../../public/works/brick.jpg";
 import forestImage from "../../public/works/forest.jpg";
-import nightImage from "../../public/works/nightview.jpg";
+import nightImage from "../../public/works/nightview-full.jpg";
 import { SiteFooter, SiteHeader } from "./site-chrome";
 import { shopifyFeatures } from "@/lib/shopify";
 import {
@@ -396,20 +396,17 @@ export default function Home() {
       {/* Shopifyとは */}
       <section
         id="shopify"
-        className="relative isolate overflow-hidden bg-[#151a1b] px-5 py-24 text-white [text-shadow:0_2px_14px_rgba(0,0,0,0.7)] sm:py-32"
+        className="relative isolate overflow-hidden bg-[#151a1b] px-5 py-24 text-white sm:py-32"
       >
         {/* 背景の夜景。左の文字の後ろだけ少し暗くして、街の明かりははっきり見せる */}
-        <div aria-hidden="true" className="absolute inset-0 -z-10">
-          <Image
-            src={nightImage}
-            alt=""
-            fill
-            sizes="(max-width: 768px) 400vw, 100vw"
-            placeholder="blur"
-            className="object-cover object-[50%_80%] brightness-125 contrast-110 saturate-[1.3]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/30 to-transparent" />
-        </div>
+        {/* 夜景の写真を、切らずにそのままの形で上に大きく置く */}
+        <Image
+          src={nightImage}
+          alt="高いビルと川、街の明かりが地平線まで広がる夜景"
+          sizes="100vw"
+          placeholder="blur"
+          className="-mx-5 -mt-24 mb-14 block h-auto w-[calc(100%+2.5rem)] max-w-none brightness-110 contrast-110 saturate-[1.2] sm:-mt-32 sm:mb-20"
+        />
         <div className="mx-auto grid max-w-[1100px] gap-14 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
           <div>
             <h2 className="text-[2.2rem] font-semibold sm:text-6xl">
@@ -431,7 +428,7 @@ export default function Home() {
           </div>
           <ul className="grid gap-3 sm:grid-cols-2">
             {shopifyFeatures.map((f, i) => (
-              <li key={f.title} className={`rounded-[20px] bg-black/40 p-7 ring-1 ring-white/15 backdrop-blur-md ${i === shopifyFeatures.length - 1 ? "sm:col-span-2" : ""}`}>
+              <li key={f.title} className={`rounded-[20px] bg-white/[0.06] p-7 ring-1 ring-white/10 ${i === shopifyFeatures.length - 1 ? "sm:col-span-2" : ""}`}>
                 <h3 className="text-xl font-semibold text-[#5ce65c]">{f.title}</h3>
                 <p className="mt-3 text-white/80">{f.body}</p>
               </li>
