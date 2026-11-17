@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+/*
+  調布Shopifyサポート
+  - 紙（paper）の上に深緑（ink）で書く。Shopifyを思わせる深い緑（brand）と若草色（sprout）を差し色に。
+  - 強調の蛍光ペン（marker）は診断票の中だけで使う。
+  - 本文は BIZ UDPゴシック、診断票の書き込みだけペン字風の Klee One。
+*/
+@theme {
+  --color-paper: #f5f6f1;
+  --color-sheet: #ffffff;
+  --color-ink: #14241f;
+  --color-ink-soft: #4a5a54;
+  --color-brand: #0c4b3b;
+  --color-brand-strong: #083a2d;
+  --color-sprout: #a6cc5a;
+  --color-rule: #d4dacf;
+  --color-marker: #f3dc4e;
+  --color-leaf: #4c7d1e;
+
+  --font-sans: var(--font-biz-ud), "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --font-hand: var(--font-klee), "Klee", "YuKyokasho", var(--font-sans);
+}
+
+html {
+  background: var(--color-paper);
+}
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.9;
+  font-feature-settings: "palt" 0;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.45;
+  font-feature-settings: "palt" 1;
+}
+
+section[id] {
+  scroll-margin-top: 4.5rem;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-leaf);
+  outline-offset: 3px;
+}
+
+/* 蛍光ペンで引いたような下線。診断票の中だけで使う */
+.marker {
+  background-image: linear-gradient(
+    transparent 58%,
+    color-mix(in srgb, var(--color-marker) 85%, transparent) 58%,
+    color-mix(in srgb, var(--color-marker) 85%, transparent) 92%,
+    transparent 92%
+  );
+  padding-inline: 0.1em;
+}
+
+/* お品書きの点線 */
+.leader {
+  flex: 1 1 2rem;
+  min-width: 1.5rem;
+  border-bottom: 2px dotted var(--color-rule);
+  transform: translateY(-0.45em);
+}
+
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
