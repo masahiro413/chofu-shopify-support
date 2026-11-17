@@ -8,6 +8,7 @@ import {
   OWNER_NAME,
   GITHUB_URL,
   LINE_URL,
+  LINE_ID,
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_URL,
@@ -299,6 +300,9 @@ export default function Home() {
             <p className="text-sm text-ink-soft">
               メール：<span className="select-all">{CONTACT_EMAIL}</span>
             </p>
+            <p className="mt-1 text-sm text-ink-soft">
+              LINE公式アカウントもやっています（ID：<span className="select-all">{LINE_ID}</span>）
+            </p>
           </div>
         </div>
         <DiagnosisSheet />
@@ -514,7 +518,7 @@ export default function Home() {
             <PrimaryButton>無料診断を申し込む</PrimaryButton>
             <LineButton />
             <p className="text-sm text-ink-soft">
-              LINEなら、お店のURLを送るだけで大丈夫です。
+              LINE公式アカウントもやっています（ID：{LINE_ID}）。LINEなら、お店のURLを送るだけで大丈夫です。
               <br />
               ボタンが開かないときは、こちらへ：
               <br />

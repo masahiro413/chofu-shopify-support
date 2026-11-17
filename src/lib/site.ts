@@ -25,3 +25,4 @@ export const DIAGNOSIS_MAILTO = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComp
 
 export const GITHUB_URL = "https://github.com/masahiro413";
 export const LINE_URL = "https://lin.ee/7KMHHYB";
+export const LINE_ID = "@827bzpuz";
