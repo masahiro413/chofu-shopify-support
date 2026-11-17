@@ -1,24 +1,8 @@
 import type { Metadata } from "next";
-import { BIZ_UDPGothic, Klee_One } from "next/font/google";
 import "./globals.css";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/site";
 
-// 本文用。ユニバーサルデザイン書体で、年配の方にも読みやすい
-const bizUd = BIZ_UDPGothic({
-  variable: "--font-biz-ud",
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  preload: false,
-});
-
-// 診断票の書き込みだけに使うペン字風の書体
-const klee = Klee_One({
-  variable: "--font-klee",
-  weight: ["400", "600"],
-  subsets: ["latin"],
-  preload: false,
-});
-
+// 文字は端末のシステム書体を使う（iPhone・MacならSFとヒラギノ）。Webフォントは読み込まない
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -57,9 +41,11 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport = { themeColor: "#000000" };
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ja" className={`${bizUd.variable} ${klee.variable} h-full antialiased`}>
+    <html lang="ja" className="h-full antialiased">
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

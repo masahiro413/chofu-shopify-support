@@ -219,45 +219,49 @@ const jsonLd = {
 
 /* ---------- 部品 ---------- */
 
-function PrimaryButton({ children }: { children: React.ReactNode }) {
+// 丸いピル型のボタン
+function Pill({
+  href,
+  children,
+  variant = "solid",
+  external = false,
+}: {
+  href: string;
+  children: React.ReactNode;
+  variant?: "solid" | "outlineDark" | "outlineLight";
+  external?: boolean;
+}) {
+  const styles = {
+    solid: "bg-brand text-white hover:bg-brand-strong",
+    outlineDark: "border border-white/45 text-white hover:border-white hover:bg-white/10",
+    outlineLight: "border border-brand text-brand hover:bg-brand hover:text-white",
+  }[variant];
   return (
     <a
-      href={DIAGNOSIS_MAILTO}
-      className="inline-flex min-h-12 items-center justify-center rounded-[3px] bg-brand px-6 py-3 font-bold text-white hover:bg-brand-strong"
+      href={href}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      className={`inline-flex min-h-12 items-center justify-center rounded-full px-7 text-[1.05rem] font-semibold transition-colors duration-300 ${styles}`}
     >
       {children}
     </a>
   );
 }
 
-function LineButton() {
-  return (
-    <a
-      href={LINE_URL}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[3px] border-2 border-[#06C755] bg-sheet px-6 py-3 font-bold text-ink hover:bg-[#06C755] hover:text-white"
-    >
-      <span
-        aria-hidden="true"
-        className="inline-block h-2.5 w-2.5 rounded-full bg-[#06C755]"
-      />
-      LINEで相談する
-    </a>
-  );
-}
-
-function SectionTitle({
-  children,
+function SectionHead({
+  title,
   lead,
+  dark = false,
 }: {
-  children: React.ReactNode;
+  title: React.ReactNode;
   lead?: React.ReactNode;
+  dark?: boolean;
 }) {
   return (
-    <div className="max-w-2xl">
-      <h2 className="text-2xl font-bold sm:text-[2rem]">{children}</h2>
-      {lead ? <p className="mt-4 text-ink-soft">{lead}</p> : null}
+    <div className="mx-auto max-w-3xl text-center">
+      <h2 className={`text-[2rem] font-semibold sm:text-5xl ${dark ? "text-white" : "text-ink"}`}>{title}</h2>
+      {lead ? (
+        <p className={`mx-auto mt-5 max-w-2xl text-lg ${dark ? "text-[#a1a1a6]" : "text-ink-soft"}`}>{lead}</p>
+      ) : null}
     </div>
   );
 }
@@ -265,53 +269,32 @@ function SectionTitle({
 // 最初の画面の主役。実際にお渡しする診断票の見本
 function DiagnosisSheet() {
   return (
-    <figure className="relative">
-      <div className="border border-rule bg-sheet px-6 py-7 shadow-[6px_8px_0_0_var(--color-rule)] sm:px-9 sm:py-9">
-        <div className="flex items-baseline justify-between gap-4 border-b-2 border-ink pb-3">
-          <p className="text-lg font-bold">ショップ診断票</p>
-          <p className="text-sm text-ink-soft">見本</p>
+    <figure className="mx-auto max-w-xl text-left">
+      <div className="rounded-[28px] bg-sheet px-7 py-8 text-ink shadow-[0_30px_80px_-30px_rgba(255,255,255,0.25)] sm:px-10 sm:py-10">
+        <div className="flex items-baseline justify-between gap-4 border-b border-rule pb-4">
+          <p className="text-lg font-semibold">ショップ診断票</p>
+          <p className="text-sm text-ink-faint">見本</p>
         </div>
-        <p className="mt-4 text-sm text-ink-soft">
-          焼き菓子のオンラインショップ（架空のお店）を見て、気づいたこと
-        </p>
-
+        <p className="mt-4 text-sm text-ink-soft">焼き菓子のオンラインショップ（架空のお店）を見て、気づいたこと</p>
         <ol className="mt-6 space-y-6">
           {sampleFindings.map((finding, index) => (
-            <li
-              key={finding.issue}
-              className="grid grid-cols-[2rem_1fr] gap-x-3"
-            >
-              <span className="font-hand text-2xl leading-none font-semibold text-leaf">
-                {index + 1}
-              </span>
+            <li key={finding.issue} className="grid grid-cols-[1.75rem_1fr] gap-x-3">
+              <span className="text-2xl leading-none font-semibold text-brand">{index + 1}</span>
               <div>
-                <p className="font-bold leading-relaxed">
-                  {index === 0 ? (
-                    <span className="marker">{finding.issue}</span>
-                  ) : (
-                    finding.issue
-                  )}
+                <p className="font-semibold leading-relaxed">
+                  {index === 0 ? <span className="marker">{finding.issue}</span> : finding.issue}
                 </p>
-                <p className="mt-1 font-hand text-[1.05rem] leading-relaxed text-ink-soft">
-                  {finding.fix}
-                </p>
-                {finding.note ? (
-                  <p className="mt-2 font-hand text-[1.05rem] font-semibold text-leaf">
-                    ― {finding.note}
-                  </p>
-                ) : null}
+                <p className="mt-1 leading-relaxed text-ink-soft">{finding.fix}</p>
+                {finding.note ? <p className="mt-2 font-semibold text-brand">― {finding.note}</p> : null}
               </div>
             </li>
           ))}
         </ol>
-
-        <p className="mt-8 border-t border-dashed border-rule pt-4 text-right font-hand text-ink-soft">
+        <p className="mt-8 border-t border-rule pt-4 text-right text-sm text-ink-soft">
           調布Shopifyサポート　{OWNER_NAME}
         </p>
       </div>
-      <figcaption className="mt-5 text-sm text-ink-soft">
-        無料診断では、こんな紙をお送りしています。
-      </figcaption>
+      <figcaption className="mt-5 text-center text-sm text-[#a1a1a6]">無料診断では、こんな診断票をお送りしています。</figcaption>
     </figure>
   );
 }
@@ -320,190 +303,168 @@ function DiagnosisSheet() {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-paper text-ink">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+    <main className="min-h-screen bg-sheet text-ink">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <header className="sticky top-0 z-20 border-b border-rule bg-paper/95 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-3 sm:px-8">
-          <a href="#top" className="font-bold">
+      {/* 上に固定する、半透明の黒いバー */}
+      <header className="fixed inset-x-0 top-0 z-30 h-12 bg-night/80 backdrop-blur-xl backdrop-saturate-150">
+        <div className="mx-auto flex h-full max-w-[1024px] items-center justify-between gap-6 px-5">
+          <a href="#top" className="text-[0.95rem] font-semibold text-white/90 hover:text-white">
             {SITE_NAME}
           </a>
-          <nav
-            aria-label="ページ内メニュー"
-            className="hidden items-center gap-7 text-[0.95rem] md:flex"
-          >
+          <nav aria-label="ページ内メニュー" className="hidden items-center gap-8 text-[0.8rem] md:flex">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="text-ink-soft hover:text-ink hover:underline"
+                className="text-white/80 opacity-90 transition-opacity duration-300 hover:text-white hover:opacity-100"
               >
                 {item.label}
               </a>
             ))}
           </nav>
-          <div className="flex items-center gap-2">
-            <a
-              href="#contact"
-              className="inline-flex min-h-11 items-center rounded-[3px] border-2 border-brand px-4 text-sm font-bold text-brand hover:bg-brand hover:text-white"
-            >
-              無料診断
-            </a>
-            <MobileMenu items={navItems} lineUrl={LINE_URL} />
-          </div>
+          <a
+            href="#contact"
+            className="hidden min-h-8 items-center rounded-full bg-brand px-4 text-[0.8rem] font-semibold text-white hover:bg-brand-strong md:inline-flex"
+          >
+            無料診断
+          </a>
+          <MobileMenu items={navItems} lineUrl={LINE_URL} />
         </div>
       </header>
 
       {/* 最初の画面 */}
-      <section
-        id="top"
-        className="mx-auto grid max-w-6xl gap-14 px-5 pt-14 pb-20 sm:px-8 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-16 lg:pt-20 lg:pb-28"
-      >
-        <div>
-          <p className="text-ink-soft">
-            {AREA}で、個人店のShopifyづくりを手伝っています
-          </p>
-          <h1 className="mt-5 text-[1.7rem] font-bold min-[400px]:text-[1.9rem] sm:text-[2.4rem] xl:text-[2.6rem]">
-            <span className="inline-block">見つけます。</span>
-            <br />
-            <span className="inline-block">あなたのお店の、</span>
-            <br />
-            <span className="inline-block">もったいない3つを。</span>
-          </h1>
-          <p className="mt-6 max-w-[34em] text-[1.05rem] text-ink-soft">
-            お店のURLを送ってください。直したほうがいい所を3つ、診断票にしてお返しします。
-            <br />
-            はじめまして、{OWNER_NAME}
-            です。抹茶のオンラインストアを立ち上げから運営まで手がけてきました。依頼するかどうかは、診断票を読んでから決めて大丈夫です。
-          </p>
-          <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <PrimaryButton>無料診断を申し込む</PrimaryButton>
-            <LineButton />
-          </div>
-          <div className="mt-4">
-            <p className="text-sm text-ink-soft">
-              メール：<span className="select-all">{CONTACT_EMAIL}</span>
-            </p>
-            <p className="mt-1 text-sm text-ink-soft">
-              LINE公式アカウントもやっています（ID：
-              <span className="select-all">{LINE_ID}</span>）
-            </p>
-          </div>
+      <section id="top" className="bg-night px-5 pt-32 pb-24 text-center text-white sm:pt-40">
+        <p className="text-lg font-semibold text-sprout sm:text-xl">{AREA}のShopifyづくり</p>
+        <h1 className="mt-4 text-[2.05rem] font-semibold min-[400px]:text-[2.4rem] sm:text-6xl lg:text-[5.25rem]">
+          <span className="inline-block">見つけます。</span>
+          <br />
+          <span className="inline-block">あなたのお店の、</span>
+          <br />
+          <span className="inline-block">もったいない3つを。</span>
+        </h1>
+        <p className="mx-auto mt-8 max-w-2xl text-lg text-[#a1a1a6] sm:text-xl">
+          お店のURLを送ってください。直したほうがいい所を3つ、診断票にしてお返しします。依頼するかどうかは、読んでから決めて大丈夫です。
+        </p>
+        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <Pill href={DIAGNOSIS_MAILTO}>無料診断を申し込む</Pill>
+          <Pill href={LINE_URL} variant="outlineDark" external>
+            LINEで相談する
+          </Pill>
         </div>
-        <DiagnosisSheet />
-      </section>
-
-      {/* こんなお店から */}
-      <section className="border-t border-rule bg-sheet">
-        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
-          <SectionTitle>こんなお店から、相談を受けています</SectionTitle>
-          <div className="mt-12 grid gap-10 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
-            {situations.map((s) => (
-              <div key={s.title} className="border-l-[3px] border-brand pl-5">
-                <h3 className="text-lg font-bold">{s.title}</h3>
-                <p className="mt-3 text-ink-soft">{s.body}</p>
-              </div>
-            ))}
-          </div>
+        <p className="mt-5 text-sm text-ink-faint">
+          メール：<span className="select-all">{CONTACT_EMAIL}</span>
+          <span className="mx-2" aria-hidden="true">
+            /
+          </span>
+          LINE公式アカウントもやっています（ID：<span className="select-all">{LINE_ID}</span>）
+        </p>
+        <div className="mt-20">
+          <DiagnosisSheet />
         </div>
       </section>
 
-      {/* 制作例 */}
-      <section id="works" className="mx-auto max-w-6xl px-5 py-24 sm:px-8">
-        <SectionTitle>これまでに作ったお店</SectionTitle>
-        <div className="mt-14 space-y-20">
-          {works.map((work, index) => (
-            <article
-              key={work.name}
-              className={`grid gap-8 lg:items-center lg:gap-14 ${
-                index % 2 === 1
-                  ? "lg:grid-cols-[1fr_1.35fr] lg:[&>*:first-child]:order-2"
-                  : "lg:grid-cols-[1.35fr_1fr]"
-              }`}
-            >
-              <div className="border border-rule bg-sheet p-2">
-                {work.image ? (
-                  <Image
-                    src={work.image}
-                    alt={work.alt ?? ""}
-                    className="aspect-[16/10] w-full object-cover object-top"
-                    sizes="(min-width: 1024px) 55vw, 100vw"
-                    placeholder="blur"
-                  />
-                ) : (
-                  <div className="flex aspect-[16/10] w-full flex-col items-center justify-center bg-[#13213f] text-[#d4b25a]">
-                    <p className="font-serif text-3xl tracking-wide">
-                      Univasal
-                    </p>
-                    <p className="mt-1 font-serif text-sm tracking-[0.35em]">
-                      DVD CLASSIC
-                    </p>
-                  </div>
-                )}
-              </div>
-              <div>
-                <p className="text-sm text-ink-soft">{work.kind}</p>
-                <h3 className="mt-1 text-2xl font-bold">{work.name}</h3>
-                <p className="mt-4 text-ink-soft">{work.body}</p>
-                <ul className="mt-5 space-y-1.5 text-[0.95rem]">
-                  {work.details.map((d) => (
-                    <li key={d} className="flex gap-3">
-                      <span
-                        aria-hidden="true"
-                        className="mt-[0.8em] h-px w-3 flex-none bg-ink"
-                      />
-                      {d}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </article>
+      {/* こんなお店に */}
+      <section className="bg-mist px-5 py-24 sm:py-32">
+        <SectionHead title="こんなお店に、ぴったりです。" />
+        <div className="mx-auto mt-14 grid max-w-[1024px] gap-4 md:grid-cols-2">
+          {situations.map((s) => (
+            <div key={s.title} className="rounded-[28px] bg-sheet p-8 sm:p-10">
+              <h3 className="text-2xl font-semibold">{s.title}</h3>
+              <p className="mt-4 text-ink-soft">{s.body}</p>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* セキュリティ */}
-      <section id="security" className="bg-brand text-white">
-        <div className="mx-auto grid max-w-6xl gap-12 px-5 py-24 sm:px-8 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
-          <h2 className="text-2xl font-bold sm:text-[2rem]">
-            サイバー攻撃への備えに、
-            <br />
-            投資を続けているShopifyへ。
-          </h2>
-          <div className="space-y-6 text-white/85">
-            <p>
-              WordPressやEC-CUBEのように自分でサーバーを持つお店は、PHPやプラグインの更新を続けないと、脆弱性をねらわれることがあります。Shopifyなら、サーバーの管理や更新はShopify側が行います。
-            </p>
-            <p>
-              Shopifyは、弱点を見つけてくれた世界中の研究者に
-              <strong className="text-sprout">最高20万ドル</strong>
-              の報奨金を出しています。脆弱性診断の大手HackerOneでは、176ある公開プログラムのうち
-              <strong className="text-sprout">5番目に、累計100万ドル</strong>
-              の報奨金支払いに届きました。決済まわりは、カード業界の国際基準PCI
-              DSSに対応しています。
-            </p>
-            <p className="border-t border-white/25 pt-6 text-[0.95rem] text-white/70">
-              追加したアプリや管理画面のパスワードの扱いは、お店側の責任として残ります。引っ越しのときに、二段階認証などお店側でできる対策も一緒に整えます。
-            </p>
-            <p className="text-xs text-white/55">
-              出典：Shopifyのバグ報奨金ページ、累計100万ドル到達時のShopify
-              Engineeringの発表
-            </p>
-          </div>
+      {/* 制作例 */}
+      <section id="works" className="px-3 py-24 sm:px-5 sm:py-32">
+        <SectionHead title="これまでに作ったお店。" />
+        <div className="mx-auto mt-14 grid max-w-[1200px] gap-3 md:grid-cols-2">
+          {works.map((work, index) => {
+            const dark = !work.image;
+            return (
+              <article
+                key={work.name}
+                className={`flex flex-col overflow-hidden rounded-[28px] px-6 pt-12 text-center sm:px-10 ${
+                  index === 0 ? "md:col-span-2" : ""
+                } ${dark ? "bg-[#0f1a33] text-white" : "bg-mist"}`}
+              >
+                <p className={`text-sm ${dark ? "text-[#d4b25a]" : "text-ink-soft"}`}>{work.kind}</p>
+                <h3 className="mt-1 text-4xl font-semibold sm:text-5xl">{work.name}</h3>
+                <p className={`mx-auto mt-4 max-w-xl ${dark ? "text-white/75" : "text-ink-soft"}`}>{work.body}</p>
+                <p className={`mx-auto mt-4 max-w-xl text-sm ${dark ? "text-white/60" : "text-ink-faint"}`}>
+                  {work.details.join("　／　")}
+                </p>
+                <div className="mt-auto pt-10">
+                  {work.image ? (
+                    <Image
+                      src={work.image}
+                      alt={work.alt ?? ""}
+                      className={`mx-auto w-full rounded-t-2xl object-cover object-top shadow-[0_20px_50px_-20px_rgba(0,0,0,0.35)] ${
+                        index === 0 ? "aspect-[16/8] max-w-4xl" : "aspect-[16/11]"
+                      }`}
+                      sizes={index === 0 ? "(min-width: 1024px) 900px, 100vw" : "(min-width: 768px) 50vw, 100vw"}
+                      placeholder="blur"
+                    />
+                  ) : (
+                    <div className="flex aspect-[16/11] w-full flex-col items-center justify-center rounded-t-2xl border border-[#d4b25a]/40 text-[#d4b25a]">
+                      <p className="font-serif text-4xl tracking-wide">Univasal</p>
+                      <p className="mt-1 font-serif text-sm tracking-[0.35em]">DVD CLASSIC</p>
+                    </div>
+                  )}
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
 
+      {/* セキュリティ */}
+      <section id="security" className="bg-night px-5 py-24 text-white sm:py-32">
+        <SectionHead
+          dark
+          title={
+            <>
+              <span className="inline-block">サイバー攻撃への備えに、</span>
+              <br />
+              <span className="inline-block">投資を続けるShopifyへ。</span>
+            </>
+          }
+          lead="WordPressやEC-CUBEのように自分でサーバーを持つお店は、PHPやプラグインの更新を続けないと、脆弱性をねらわれることがあります。Shopifyなら、サーバーの管理や更新はShopify側が行います。"
+        />
+        <dl className="mx-auto mt-16 grid max-w-[1024px] gap-12 text-center sm:grid-cols-3">
+          <div>
+            <dt className="text-[#a1a1a6]">弱点を見つけた研究者への報奨金</dt>
+            <dd className="mt-2 text-5xl font-semibold text-sprout">最高20万ドル</dd>
+          </div>
+          <div>
+            <dt className="text-[#a1a1a6]">HackerOneの公開プログラム176件のうち</dt>
+            <dd className="mt-2 text-5xl font-semibold text-sprout">5番目</dd>
+            <dd className="mt-2 text-sm text-[#a1a1a6]">に累計100万ドルの支払いへ到達</dd>
+          </div>
+          <div>
+            <dt className="text-[#a1a1a6]">決済まわりの安全基準</dt>
+            <dd className="mt-2 text-5xl font-semibold text-sprout">PCI DSS</dd>
+            <dd className="mt-2 text-sm text-[#a1a1a6]">カード業界の国際基準に対応</dd>
+          </div>
+        </dl>
+        <p className="mx-auto mt-16 max-w-2xl text-center text-[#a1a1a6]">
+          追加したアプリや管理画面のパスワードの扱いは、お店側の責任として残ります。引っ越しのときに、二段階認証などお店側でできる対策も一緒に整えます。
+        </p>
+        <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-ink-faint">
+          出典：Shopifyのバグ報奨金ページ、累計100万ドル到達時のShopify Engineeringの発表
+        </p>
+      </section>
+
       {/* できること */}
-      <section className="mx-auto max-w-6xl px-5 py-24 sm:px-8">
-        <SectionTitle>お手伝いできること</SectionTitle>
-        <div className="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+      <section className="px-5 py-24 sm:py-32">
+        <SectionHead title="お手伝いできること。" />
+        <div className="mx-auto mt-16 grid max-w-[1024px] gap-12 text-center sm:grid-cols-2 lg:grid-cols-4">
           {services.map((s) => (
-            <div key={s.group} className="border-t-2 border-ink pt-5">
-              <h3 className="text-xl font-bold">{s.group}</h3>
-              <ul className="mt-4 space-y-2.5 text-ink-soft">
+            <div key={s.group}>
+              <h3 className="text-2xl font-semibold">{s.group}</h3>
+              <ul className="mt-4 space-y-2 text-ink-soft">
                 {s.items.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
@@ -514,38 +475,32 @@ export default function Home() {
       </section>
 
       {/* 料金 */}
-      <section id="price" className="border-y border-rule bg-sheet">
-        <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8">
-          <SectionTitle lead="ただいま開業記念価格でお受けしています（先着3件）。金額は税別で、Shopifyの月額料金やアプリ代は別にかかります。">
-            料金
-          </SectionTitle>
-          <dl className="mt-12 max-w-3xl space-y-5">
-            {prices.map((item) => (
-              <div key={item.name}>
-                <div className="flex items-baseline gap-3">
-                  <dt>{item.name}</dt>
-                  <span aria-hidden="true" className="leader" />
-                  <dd className="font-bold whitespace-nowrap">{item.price}</dd>
-                </div>
-                {item.regular ? (
-                  <p className="text-right text-sm text-ink-soft">
-                    {item.regular}
-                  </p>
-                ) : null}
-              </div>
-            ))}
-          </dl>
-        </div>
+      <section id="price" className="bg-mist px-5 py-24 sm:py-32">
+        <SectionHead
+          title="料金。"
+          lead="ただいま開業記念価格でお受けしています（先着3件）。金額は税別で、Shopifyの月額料金やアプリ代は別にかかります。"
+        />
+        <dl className="mx-auto mt-14 max-w-3xl divide-y divide-rule rounded-[28px] bg-sheet px-6 sm:px-10">
+          {prices.map((item) => (
+            <div key={item.name} className="flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8">
+              <dt>{item.name}</dt>
+              <dd className="sm:text-right">
+                <span className="text-lg font-semibold whitespace-nowrap">{item.price}</span>
+                {item.regular ? <span className="block text-sm text-ink-faint">{item.regular}</span> : null}
+              </dd>
+            </div>
+          ))}
+        </dl>
       </section>
 
       {/* 流れ */}
-      <section className="mx-auto max-w-6xl px-5 py-24 sm:px-8">
-        <SectionTitle>お願いするときの流れ</SectionTitle>
-        <ol className="mt-12 grid gap-10 md:grid-cols-4 md:gap-6">
+      <section className="px-5 py-24 sm:py-32">
+        <SectionHead title="お願いするときの流れ。" />
+        <ol className="mx-auto mt-16 grid max-w-[1024px] gap-12 text-center sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, index) => (
             <li key={step.title}>
-              <p className="text-3xl font-bold text-brand">{index + 1}</p>
-              <h3 className="mt-2 text-lg font-bold">{step.title}</h3>
+              <p className="text-5xl font-semibold text-brand">{index + 1}</p>
+              <h3 className="mt-3 text-xl font-semibold">{step.title}</h3>
               <p className="mt-2 text-ink-soft">{step.body}</p>
             </li>
           ))}
@@ -553,14 +508,13 @@ export default function Home() {
       </section>
 
       {/* 私について */}
-      <section className="border-t border-rule">
-        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-24 sm:px-8 lg:grid-cols-[1fr_2fr] lg:gap-20">
-          <div>
-            <h2 className="text-2xl font-bold sm:text-[2rem]">{OWNER_NAME}</h2>
-            <p className="mt-2 text-ink-soft">{AREA}在住</p>
-            <p className="mt-1 text-ink-soft">Shopifyパートナー登録済み</p>
+      <section className="bg-mist px-5 py-24 sm:py-32">
+        <div className="mx-auto max-w-2xl">
+          <div className="text-center">
+            <h2 className="text-[2rem] font-semibold sm:text-5xl">{OWNER_NAME}</h2>
+            <p className="mt-3 text-ink-soft">{AREA}在住　／　Shopifyパートナー登録済み</p>
           </div>
-          <div className="max-w-[38em] space-y-5 text-ink-soft">
+          <div className="mt-12 space-y-5 text-[1.05rem] text-ink-soft">
             <p>
               抹茶のオンラインストア「NEKOHAMA」で、立ち上げから運営までを担当してきました。提案書と要件の整理から、構築、決済・多通貨・海外配送の設定、公開前の確認、公開までの進行管理まで、自分の手で進めています。
             </p>
@@ -570,105 +524,80 @@ export default function Home() {
             <p>
               Shopifyのパートナープログラムに登録していて、お店の制作や運用のお手伝いを仕事としてお受けしています。制作はパートナー用の開発ストアで進めるので、公開するまでお店の費用はかかりません。
             </p>
-            <p>
-              以前は、東南アジアのベトナムで海外営業をしていました。海外のお客さんに向けたお店づくりも、ご相談ください。
-            </p>
+            <p>以前は、東南アジアのベトナムで海外営業をしていました。海外のお客さんに向けたお店づくりも、ご相談ください。</p>
             <p>制作中は毎週、進み具合をご報告します。</p>
-            <p>
-              これまでに書いたコードは
-              <a
-                href={GITHUB_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mx-1 font-bold text-brand underline underline-offset-4 hover:text-brand-strong"
-              >
-                GitHub
-              </a>
-              で公開しています。
-            </p>
           </div>
-        </div>
-      </section>
-
-      {/* よくある質問 */}
-      <section id="faq" className="border-t border-rule bg-sheet">
-        <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8">
-          <SectionTitle>よくある質問</SectionTitle>
-          <div className="mt-10 max-w-3xl divide-y divide-rule border-y border-rule">
-            {faqs.map((faq) => (
-              <details key={faq.q} className="group">
-                <summary className="flex min-h-14 cursor-pointer items-center justify-between gap-6 py-4 font-bold">
-                  {faq.q}
-                  <span
-                    aria-hidden="true"
-                    className="text-xl text-brand group-open:hidden"
-                  >
-                    ＋
-                  </span>
-                  <span
-                    aria-hidden="true"
-                    className="hidden text-xl text-brand group-open:inline"
-                  >
-                    −
-                  </span>
-                </summary>
-                <p className="pb-5 text-ink-soft">{faq.a}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* お問い合わせ */}
-      <section
-        id="contact"
-        className="mx-auto w-full max-w-6xl px-5 py-24 sm:px-8"
-      >
-        <div className="grid gap-10 border-2 border-ink bg-sheet px-6 py-12 sm:px-12 lg:grid-cols-[1.4fr_1fr] lg:items-center">
-          <div>
-            <h2 className="text-2xl font-bold sm:text-[2rem]">
-              まずは、お店のURLを送ってください
-            </h2>
-            <p className="mt-4 max-w-[34em] text-ink-soft">
-              直したほうがいい所を3つ、診断票にしてお返しします。たいてい1日以内にお返事しています。
-            </p>
-          </div>
-          <div className="flex flex-col items-stretch gap-3 sm:items-start">
-            <PrimaryButton>無料診断を申し込む</PrimaryButton>
-            <LineButton />
-            <p className="text-sm text-ink-soft">
-              LINE公式アカウントもやっています（ID：{LINE_ID}
-              ）。LINEなら、お店のURLを送るだけで大丈夫です。
-              <br />
-              ボタンが開かないときは、こちらへ：
-              <br />
-              <span className="font-bold text-ink select-all">
-                {CONTACT_EMAIL}
-              </span>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <footer className="border-t border-rule">
-        <div className="mx-auto flex max-w-6xl flex-col gap-1 px-5 py-8 text-sm text-ink-soft sm:flex-row sm:justify-between sm:px-8">
-          <span>
-            {SITE_NAME}（{AREA}）
-          </span>
-          <span>
+          <p className="mt-8 text-center">
             <a
               href={GITHUB_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="underline underline-offset-4 hover:text-ink"
+              className="chevron text-lg text-brand hover:underline"
             >
+              書いたコードをGitHubで見る
+            </a>
+          </p>
+        </div>
+      </section>
+
+      {/* よくある質問 */}
+      <section id="faq" className="px-5 py-24 sm:py-32">
+        <SectionHead title="よくある質問。" />
+        <div className="mx-auto mt-14 max-w-3xl divide-y divide-rule border-y border-rule">
+          {faqs.map((faq) => (
+            <details key={faq.q} className="group">
+              <summary className="flex min-h-16 cursor-pointer items-center justify-between gap-6 py-5 text-lg font-semibold">
+                {faq.q}
+                <span
+                  aria-hidden="true"
+                  className="text-2xl font-light text-ink-soft transition-transform duration-300 group-open:rotate-45 motion-reduce:transition-none"
+                >
+                  +
+                </span>
+              </summary>
+              <p className="pb-6 text-ink-soft">{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      {/* お問い合わせ */}
+      <section id="contact" className="bg-night px-5 py-28 text-center text-white sm:py-36">
+        <h2 className="text-[2.2rem] font-semibold sm:text-6xl">
+          <span className="inline-block">まずは、</span>
+          <span className="inline-block">お店のURLを。</span>
+        </h2>
+        <p className="mx-auto mt-6 max-w-xl text-lg text-[#a1a1a6]">
+          直したほうがいい所を3つ、診断票にしてお返しします。1日以内にお返事します。LINEなら、URLを送るだけで大丈夫です。
+        </p>
+        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <Pill href={DIAGNOSIS_MAILTO}>無料診断を申し込む</Pill>
+          <Pill href={LINE_URL} variant="outlineDark" external>
+            LINEで相談する
+          </Pill>
+        </div>
+        <p className="mt-6 text-sm text-ink-faint">
+          ボタンが開かないときは：<span className="select-all text-white/80">{CONTACT_EMAIL}</span>
+          <br />
+          LINE公式アカウント ID：<span className="select-all text-white/80">{LINE_ID}</span>
+        </p>
+      </section>
+
+      <footer className="bg-mist px-5 py-8 text-xs text-ink-faint">
+        <div className="mx-auto flex max-w-[1024px] flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <nav aria-label="フッター" className="flex flex-wrap gap-x-5 gap-y-2">
+            {navItems.map((item) => (
+              <a key={item.href} href={item.href} className="text-ink-soft hover:underline">
+                {item.label}
+              </a>
+            ))}
+            <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="text-ink-soft hover:underline">
               GitHub
             </a>
-            <span className="mx-3" aria-hidden="true">
-              /
-            </span>
-            © {SITE_NAME}
-          </span>
+          </nav>
+          <p>
+            © {SITE_NAME}（{AREA}）
+          </p>
         </div>
       </footer>
     </main>

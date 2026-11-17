@@ -4,16 +4,13 @@ import { useEffect, useState } from "react";
 
 type Item = { href: string; label: string };
 
-export function MobileMenu({
-  items,
-  lineUrl,
-}: {
-  items: Item[];
-  lineUrl: string;
-}) {
+// スマホ用のメニュー。ボタンで開閉し、開くとメニューが上からすっと降りてくる
+export function MobileMenu({ items, lineUrl }: { items: Item[]; lineUrl: string }) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    // 開いている間は後ろのページをスクロールさせない
+    document.documentElement.style.overflow = open ? "hidden" : "";
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
@@ -24,10 +21,14 @@ export function MobileMenu({
     window.addEventListener("keydown", onKey);
     window.addEventListener("resize", onResize);
     return () => {
+      document.documentElement.style.overflow = "";
       window.removeEventListener("keydown", onKey);
       window.removeEventListener("resize", onResize);
     };
   }, [open]);
+
+  const bar =
+    "absolute h-[1.5px] w-[18px] rounded-full bg-current transition-transform duration-300 ease-in-out motion-reduce:transition-none";
 
   return (
     <div className="md:hidden" data-mobile-menu>
@@ -37,54 +38,40 @@ export function MobileMenu({
         aria-controls="mobile-menu-panel"
         aria-label={open ? "メニューを閉じる" : "メニューを開く"}
         onClick={() => setOpen((v) => !v)}
-        className="relative flex h-11 w-11 items-center justify-center rounded-[3px] text-ink hover:bg-rule/60"
+        className="relative flex h-11 w-11 items-center justify-center text-white/85 hover:text-white"
         data-menu-button
       >
-        <span
-          aria-hidden="true"
-          className={`absolute h-0.5 w-6 bg-current transition-transform duration-200 motion-reduce:transition-none ${
-            open ? "rotate-45" : "-translate-y-2"
-          }`}
-        />
-        <span
-          aria-hidden="true"
-          className={`absolute h-0.5 w-6 bg-current transition-opacity duration-200 motion-reduce:transition-none ${
-            open ? "opacity-0" : "opacity-100"
-          }`}
-        />
-        <span
-          aria-hidden="true"
-          className={`absolute h-0.5 w-6 bg-current transition-transform duration-200 motion-reduce:transition-none ${
-            open ? "-rotate-45" : "translate-y-2"
-          }`}
-        />
+        <span aria-hidden="true" className={`${bar} ${open ? "rotate-45" : "-translate-y-[4px]"}`} />
+        <span aria-hidden="true" className={`${bar} ${open ? "-rotate-45" : "translate-y-[4px]"}`} />
       </button>
 
       <nav
         id="mobile-menu-panel"
         aria-label="ページ内メニュー"
-        hidden={!open}
-        className="absolute inset-x-0 top-full border-b border-rule bg-paper px-5 pb-6 shadow-[0_8px_16px_-12px_rgba(20,36,31,0.35)]"
+        inert={!open}
+        className={`fixed inset-x-0 top-12 h-[calc(100dvh-3rem)] overflow-y-auto bg-night px-8 pt-6 pb-10 transition-[transform,opacity,visibility] duration-500 ease-out motion-reduce:transition-none ${
+          open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-6 opacity-0"
+        }`}
         data-menu-panel
       >
         <ul>
           {items.map((item) => (
-            <li key={item.href} className="border-b border-rule">
+            <li key={item.href}>
               <a
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="flex min-h-14 items-center text-[1.05rem] font-bold text-ink"
+                className="block py-3 text-[1.75rem] font-semibold text-white/90 hover:text-white"
               >
                 {item.label}
               </a>
             </li>
           ))}
         </ul>
-        <div className="mt-5 grid gap-3">
+        <div className="mt-10 grid gap-3">
           <a
             href="#contact"
             onClick={() => setOpen(false)}
-            className="inline-flex min-h-12 items-center justify-center rounded-[3px] bg-brand px-6 font-bold text-white hover:bg-brand-strong"
+            className="inline-flex min-h-12 items-center justify-center rounded-full bg-brand px-6 font-semibold text-white hover:bg-brand-strong"
           >
             無料診断を申し込む
           </a>
@@ -92,12 +79,8 @@ export function MobileMenu({
             href={lineUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[3px] border-2 border-[#06C755] bg-sheet px-6 font-bold text-ink"
+            className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/40 px-6 font-semibold text-white hover:border-white"
           >
-            <span
-              aria-hidden="true"
-              className="inline-block h-2.5 w-2.5 rounded-full bg-[#06C755]"
-            />
             LINEで相談する
           </a>
         </div>
