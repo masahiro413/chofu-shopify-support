@@ -2,6 +2,8 @@ import Image, { type StaticImageData } from "next/image";
 import fleurImage from "../../public/works/fleur.jpg";
 import nekohamaImage from "../../public/works/nekohama.jpg";
 import hanachozuImage from "../../public/works/hanachozu.jpg";
+import brickImage from "../../public/works/brick.jpg";
+import forestImage from "../../public/works/forest.jpg";
 import { MobileMenu } from "./mobile-menu";
 import {
   AREA,
@@ -261,7 +263,7 @@ function SectionHead({
     <div className="mx-auto max-w-3xl text-center">
       <h2 className={`text-[2rem] font-semibold sm:text-5xl ${dark ? "text-white" : "text-ink"}`}>{title}</h2>
       {lead ? (
-        <p className={`mx-auto mt-5 max-w-2xl text-lg ${dark ? "text-[#a1a1a6]" : "text-ink-soft"}`}>{lead}</p>
+        <p className={`mx-auto mt-5 max-w-2xl text-lg ${dark ? "text-white/85" : "text-ink-soft"}`}>{lead}</p>
       ) : null}
     </div>
   );
@@ -436,7 +438,15 @@ export default function Home() {
       </section>
 
       {/* セキュリティ */}
-      <section id="security" className="bg-night px-5 py-24 text-white sm:py-32">
+      <section
+        id="security"
+        className="relative isolate overflow-hidden bg-night px-5 py-24 text-white [text-shadow:0_2px_14px_rgba(0,0,0,0.6)] sm:py-32"
+      >
+        {/* 背景のレンガの壁。「お店を守る壁」として */}
+        <div aria-hidden="true" className="absolute inset-0 -z-10">
+          <Image src={brickImage} alt="" fill sizes="100vw" placeholder="blur" className="object-cover object-top saturate-[1.2]" />
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
         <SectionHead
           dark
           title={
@@ -450,24 +460,24 @@ export default function Home() {
         />
         <dl className="mx-auto mt-16 grid max-w-[1024px] gap-12 text-center sm:grid-cols-3">
           <div>
-            <dt className="text-[#a1a1a6]">弱点を見つけた研究者への報奨金</dt>
+            <dt className="text-white/85">弱点を見つけた研究者への報奨金</dt>
             <dd className="mt-2 text-5xl font-semibold text-sprout">最高20万ドル</dd>
           </div>
           <div>
-            <dt className="text-[#a1a1a6]">HackerOneの公開プログラム176件のうち</dt>
+            <dt className="text-white/85">HackerOneの公開プログラム176件のうち</dt>
             <dd className="mt-2 text-5xl font-semibold text-sprout">5番目</dd>
-            <dd className="mt-2 text-sm text-[#a1a1a6]">に累計100万ドルの支払いへ到達</dd>
+            <dd className="mt-2 text-sm text-white/85">に累計100万ドルの支払いへ到達</dd>
           </div>
           <div>
-            <dt className="text-[#a1a1a6]">決済まわりの安全基準</dt>
+            <dt className="text-white/85">決済まわりの安全基準</dt>
             <dd className="mt-2 text-5xl font-semibold text-sprout">PCI DSS</dd>
-            <dd className="mt-2 text-sm text-[#a1a1a6]">カード業界の国際基準に対応</dd>
+            <dd className="mt-2 text-sm text-white/85">カード業界の国際基準に対応</dd>
           </div>
         </dl>
-        <p className="mx-auto mt-16 max-w-2xl text-center text-[#a1a1a6]">
+        <p className="mx-auto mt-16 max-w-2xl text-center text-white/85">
           追加したアプリや管理画面のパスワードの扱いは、お店側の責任として残ります。引っ越しのときに、二段階認証などお店側でできる対策も一緒に整えます。
         </p>
-        <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-ink-faint">
+        <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-white/70">
           出典：Shopifyのバグ報奨金ページ、累計100万ドル到達時のShopify Engineeringの発表
         </p>
       </section>
@@ -577,12 +587,27 @@ export default function Home() {
       </section>
 
       {/* お問い合わせ */}
-      <section id="contact" className="bg-night px-5 py-28 text-center text-white sm:py-36">
+      <section
+        id="contact"
+        className="relative isolate overflow-hidden bg-night px-5 py-28 text-center text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.65)] sm:py-36"
+      >
+        {/* 背景の森の写真 */}
+        <div aria-hidden="true" className="absolute inset-0 -z-10">
+          <Image
+            src={forestImage}
+            alt=""
+            fill
+            sizes="100vw"
+            placeholder="blur"
+            className="object-cover object-center brightness-105 contrast-110 saturate-[1.3]"
+          />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_55%_at_50%_50%,rgba(0,0,0,0.55),rgba(0,0,0,0.15)_80%)]" />
+        </div>
         <h2 className="text-[2.2rem] font-semibold sm:text-6xl">
           <span className="inline-block">まずは、</span>
           <span className="inline-block">お店のURLを。</span>
         </h2>
-        <p className="mx-auto mt-6 max-w-xl text-lg text-[#a1a1a6]">
+        <p className="mx-auto mt-6 max-w-xl text-lg text-white/90">
           直したほうがいい所を3つ、診断票にしてお返しします。1日以内にお返事します。LINEなら、URLを送るだけで大丈夫です。
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -591,7 +616,7 @@ export default function Home() {
             LINEで相談する
           </Pill>
         </div>
-        <p className="mt-6 text-sm text-ink-faint">
+        <p className="mt-6 text-sm text-white/85">
           ボタンが開かないときは：<span className="select-all text-white/80">{CONTACT_EMAIL}</span>
           <br />
           LINE公式アカウント ID：<span className="select-all text-white/80">{LINE_ID}</span>
