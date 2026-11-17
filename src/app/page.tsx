@@ -236,8 +236,10 @@ function Pill({
 }) {
   const styles = {
     solid: "bg-brand text-white hover:bg-brand-strong",
-    outlineDark: "border border-white/70 bg-black/35 text-white backdrop-blur-sm hover:border-white hover:bg-black/50",
-    outlineLight: "border border-brand text-brand hover:bg-brand hover:text-white",
+    outlineDark:
+      "border border-white/70 bg-black/35 text-white backdrop-blur-sm hover:border-white hover:bg-black/50",
+    outlineLight:
+      "border border-brand text-brand hover:bg-brand hover:text-white",
   }[variant];
   return (
     <a
@@ -261,9 +263,17 @@ function SectionHead({
 }) {
   return (
     <div className="mx-auto max-w-3xl text-center">
-      <h2 className={`text-[2rem] font-semibold sm:text-5xl ${dark ? "text-white" : "text-ink"}`}>{title}</h2>
+      <h2
+        className={`text-[2rem] font-semibold sm:text-5xl ${dark ? "text-white" : "text-ink"}`}
+      >
+        {title}
+      </h2>
       {lead ? (
-        <p className={`mx-auto mt-5 max-w-2xl text-lg ${dark ? "text-white/85" : "text-ink-soft"}`}>{lead}</p>
+        <p
+          className={`mx-auto mt-5 max-w-2xl text-lg ${dark ? "text-white/85" : "text-ink-soft"}`}
+        >
+          {lead}
+        </p>
       ) : null}
     </div>
   );
@@ -278,17 +288,34 @@ function DiagnosisSheet() {
           <p className="text-lg font-semibold">ショップ診断票</p>
           <p className="text-sm text-ink-faint">見本</p>
         </div>
-        <p className="mt-4 text-sm text-ink-soft">焼き菓子のオンラインショップ（架空のお店）を見て、気づいたこと</p>
+        <p className="mt-4 text-sm text-ink-soft">
+          焼き菓子のオンラインショップ（架空のお店）を見て、気づいたこと
+        </p>
         <ol className="mt-6 space-y-6">
           {sampleFindings.map((finding, index) => (
-            <li key={finding.issue} className="grid grid-cols-[1.75rem_1fr] gap-x-3">
-              <span className="text-2xl leading-none font-semibold text-brand">{index + 1}</span>
+            <li
+              key={finding.issue}
+              className="grid grid-cols-[1.75rem_1fr] gap-x-3"
+            >
+              <span className="text-2xl leading-none font-semibold text-brand">
+                {index + 1}
+              </span>
               <div>
                 <p className="font-semibold leading-relaxed">
-                  {index === 0 ? <span className="marker">{finding.issue}</span> : finding.issue}
+                  {index === 0 ? (
+                    <span className="marker">{finding.issue}</span>
+                  ) : (
+                    finding.issue
+                  )}
                 </p>
-                <p className="mt-1 leading-relaxed text-ink-soft">{finding.fix}</p>
-                {finding.note ? <p className="mt-2 font-semibold text-brand">― {finding.note}</p> : null}
+                <p className="mt-1 leading-relaxed text-ink-soft">
+                  {finding.fix}
+                </p>
+                {finding.note ? (
+                  <p className="mt-2 font-semibold text-brand">
+                    ― {finding.note}
+                  </p>
+                ) : null}
               </div>
             </li>
           ))}
@@ -297,7 +324,9 @@ function DiagnosisSheet() {
           調布Shopifyサポート　{OWNER_NAME}
         </p>
       </div>
-      <figcaption className="mt-5 text-center text-sm text-[#a1a1a6]">無料診断では、こんな診断票をお送りしています。</figcaption>
+      <figcaption className="mt-5 text-center text-sm text-[#a1a1a6]">
+        無料診断では、こんな診断票をお送りしています。
+      </figcaption>
     </figure>
   );
 }
@@ -307,15 +336,24 @@ function DiagnosisSheet() {
 export default function Home() {
   return (
     <main className="min-h-screen bg-sheet text-ink">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       {/* 上に固定する、半透明の黒いバー */}
       <header className="fixed inset-x-0 top-0 z-30 h-12 bg-night/80 backdrop-blur-xl backdrop-saturate-150">
         <div className="mx-auto flex h-full max-w-[1024px] items-center justify-between gap-6 px-5">
-          <a href="#top" className="text-[0.95rem] font-semibold text-white/90 hover:text-white">
+          <a
+            href="#top"
+            className="text-[0.95rem] font-semibold text-white/90 hover:text-white"
+          >
             {SITE_NAME}
           </a>
-          <nav aria-label="ページ内メニュー" className="hidden items-center gap-8 text-[0.8rem] md:flex">
+          <nav
+            aria-label="ページ内メニュー"
+            className="hidden items-center gap-8 text-[0.8rem] md:flex"
+          >
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -337,9 +375,15 @@ export default function Home() {
       </header>
 
       {/* 最初の画面 */}
-      <section id="top" className="relative isolate overflow-hidden bg-night px-5 pt-32 pb-24 text-center text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.65)] sm:pt-40">
+      <section
+        id="top"
+        className="relative isolate overflow-hidden bg-night px-5 pt-32 pb-24 text-center text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.65)] sm:pt-40"
+      >
         {/* 背景の写真。文字が読めるよう、上から黒を重ねて下に向かって黒へ溶かす */}
-        <div aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-[56rem] sm:h-[60rem]">
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 -z-10 h-[56rem] sm:h-[60rem]"
+        >
           <Image
             src={hanachozuImage}
             alt=""
@@ -352,7 +396,9 @@ export default function Home() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_55%_45%_at_50%_40%,rgba(0,0,0,0.55),transparent_75%)]" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent via-55% to-black" />
         </div>
-        <p className="text-lg font-semibold text-white sm:text-xl">{AREA}のShopifyづくり</p>
+        <p className="text-lg font-semibold text-white sm:text-xl">
+          {AREA}のShopifyづくり
+        </p>
         <h1 className="mt-4 text-[2.05rem] font-semibold min-[400px]:text-[2.4rem] sm:text-6xl lg:text-[5.25rem]">
           <span className="inline-block">見つけます。</span>
           <br />
@@ -374,7 +420,8 @@ export default function Home() {
           <span className="mx-2" aria-hidden="true">
             /
           </span>
-          LINE公式アカウントもやっています（ID：<span className="select-all">{LINE_ID}</span>）
+          LINE公式アカウントもやっています（ID：
+          <span className="select-all">{LINE_ID}</span>）
         </p>
         <div className="mt-20">
           <DiagnosisSheet />
@@ -407,10 +454,22 @@ export default function Home() {
                   index === 0 ? "md:col-span-2" : ""
                 } ${dark ? "bg-[#0f1a33] text-white" : "bg-mist"}`}
               >
-                <p className={`text-sm ${dark ? "text-[#d4b25a]" : "text-ink-soft"}`}>{work.kind}</p>
-                <h3 className="mt-1 text-4xl font-semibold sm:text-5xl">{work.name}</h3>
-                <p className={`mx-auto mt-4 max-w-xl ${dark ? "text-white/75" : "text-ink-soft"}`}>{work.body}</p>
-                <p className={`mx-auto mt-4 max-w-xl text-sm ${dark ? "text-white/60" : "text-ink-faint"}`}>
+                <p
+                  className={`text-sm ${dark ? "text-[#d4b25a]" : "text-ink-soft"}`}
+                >
+                  {work.kind}
+                </p>
+                <h3 className="mt-1 text-4xl font-semibold sm:text-5xl">
+                  {work.name}
+                </h3>
+                <p
+                  className={`mx-auto mt-4 max-w-xl ${dark ? "text-white/75" : "text-ink-soft"}`}
+                >
+                  {work.body}
+                </p>
+                <p
+                  className={`mx-auto mt-4 max-w-xl text-sm ${dark ? "text-white/60" : "text-ink-faint"}`}
+                >
                   {work.details.join("　／　")}
                 </p>
                 <div className="mt-auto pt-10">
@@ -419,15 +478,25 @@ export default function Home() {
                       src={work.image}
                       alt={work.alt ?? ""}
                       className={`mx-auto w-full rounded-t-2xl object-cover object-top shadow-[0_20px_50px_-20px_rgba(0,0,0,0.35)] ${
-                        index === 0 ? "aspect-[16/8] max-w-4xl" : "aspect-[16/11]"
+                        index === 0
+                          ? "aspect-[16/8] max-w-4xl"
+                          : "aspect-[16/11]"
                       }`}
-                      sizes={index === 0 ? "(min-width: 1024px) 900px, 100vw" : "(min-width: 768px) 50vw, 100vw"}
+                      sizes={
+                        index === 0
+                          ? "(min-width: 1024px) 900px, 100vw"
+                          : "(min-width: 768px) 50vw, 100vw"
+                      }
                       placeholder="blur"
                     />
                   ) : (
                     <div className="flex aspect-[16/11] w-full flex-col items-center justify-center rounded-t-2xl border border-[#d4b25a]/40 text-[#d4b25a]">
-                      <p className="font-serif text-4xl tracking-wide">Univasal</p>
-                      <p className="mt-1 font-serif text-sm tracking-[0.35em]">DVD CLASSIC</p>
+                      <p className="font-serif text-4xl tracking-wide">
+                        Univasal
+                      </p>
+                      <p className="mt-1 font-serif text-sm tracking-[0.35em]">
+                        DVD CLASSIC
+                      </p>
                     </div>
                   )}
                 </div>
@@ -438,50 +507,71 @@ export default function Home() {
       </section>
 
       {/* セキュリティ */}
-      <section id="security" className="bg-night px-3 py-24 text-white sm:px-5 sm:py-32">
-        <SectionHead
-          dark
-          title={
-            <>
-              <span className="inline-block">サイバー攻撃への備えに、</span>
-              <br />
-              <span className="inline-block">投資を続けるShopifyへ。</span>
-            </>
-          }
-          lead="WordPressやEC-CUBEのように自分でサーバーを持つお店は、PHPやプラグインの更新を続けないと、脆弱性をねらわれることがあります。Shopifyなら、サーバーの管理や更新はShopify側が行います。"
-        />
+      <section
+        id="security"
+        className="bg-night pt-24 pb-24 text-white sm:pt-32 sm:pb-32"
+      >
+        <div className="px-5">
+          <SectionHead
+            dark
+            title={
+              <>
+                <span className="inline-block">サイバー攻撃への備えに、</span>
+                <br />
+                <span className="inline-block">投資を続けるShopifyへ。</span>
+              </>
+            }
+            lead="WordPressやEC-CUBEのように自分でサーバーを持つお店は、PHPやプラグインの更新を続けないと、脆弱性をねらわれることがあります。Shopifyなら、サーバーの管理や更新はShopify側が行います。"
+          />
+        </div>
         {/* レンガの壁の写真を大きなパネルにして、その上にすりガラスの数字を重ねる */}
-        <div className="relative isolate mx-auto mt-16 max-w-[1200px] overflow-hidden rounded-[28px]">
+        <div className="relative isolate mt-16 flex min-h-[90svh] items-center overflow-hidden sm:min-h-[100svh]">
           <Image
             src={brickImage}
             alt="赤いレンガを積み上げた、がっしりとした壁"
             fill
-            sizes="(min-width: 1200px) 1200px, 100vw"
+            sizes="100vw"
             placeholder="blur"
             className="-z-10 object-cover object-[50%_35%] brightness-110 contrast-110 saturate-[1.35]"
           />
-          <dl className="grid gap-4 p-5 sm:grid-cols-3 sm:p-10 md:py-28">
+          <dl className="mx-auto grid w-full max-w-[1100px] gap-4 px-5 py-16 sm:grid-cols-3 sm:px-8">
             {[
-              { label: "弱点を見つけた研究者への報奨金", value: "最高20万ドル" },
-              { label: "HackerOneの公開プログラム176件のうち", value: "5番目", sub: "に累計100万ドルの支払いへ到達" },
-              { label: "決済まわりの安全基準", value: "PCI DSS", sub: "カード業界の国際基準に対応" },
+              {
+                label: "弱点を見つけた研究者への報奨金",
+                value: "最高20万ドル",
+              },
+              {
+                label: "HackerOneの公開プログラム176件のうち",
+                value: "5番目",
+                sub: "に累計100万ドルの支払いへ到達",
+              },
+              {
+                label: "決済まわりの安全基準",
+                value: "PCI DSS",
+                sub: "カード業界の国際基準に対応",
+              },
             ].map((stat) => (
               <div
                 key={stat.value}
                 className="rounded-2xl bg-black/55 px-6 py-8 text-center ring-1 ring-white/15 backdrop-blur-xl"
               >
                 <dt className="text-sm text-white/85">{stat.label}</dt>
-                <dd className="mt-2 text-4xl font-semibold text-sprout lg:text-5xl">{stat.value}</dd>
-                {stat.sub ? <dd className="mt-2 text-sm text-white/85">{stat.sub}</dd> : null}
+                <dd className="mt-2 text-4xl font-semibold whitespace-nowrap text-sprout 2xl:text-5xl">
+                  {stat.value}
+                </dd>
+                {stat.sub ? (
+                  <dd className="mt-2 text-sm text-white/85">{stat.sub}</dd>
+                ) : null}
               </div>
             ))}
           </dl>
         </div>
-        <p className="mx-auto mt-14 max-w-2xl text-center text-white/85">
+        <p className="mx-auto mt-14 max-w-2xl px-5 text-center text-white/85">
           追加したアプリや管理画面のパスワードの扱いは、お店側の責任として残ります。引っ越しのときに、二段階認証などお店側でできる対策も一緒に整えます。
         </p>
-        <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-white/60">
-          出典：Shopifyのバグ報奨金ページ、累計100万ドル到達時のShopify Engineeringの発表
+        <p className="mx-auto mt-6 max-w-2xl px-5 text-center text-xs text-white/60">
+          出典：Shopifyのバグ報奨金ページ、累計100万ドル到達時のShopify
+          Engineeringの発表
         </p>
       </section>
 
@@ -510,11 +600,20 @@ export default function Home() {
         />
         <dl className="mx-auto mt-14 max-w-3xl divide-y divide-rule rounded-[28px] bg-sheet px-6 sm:px-10">
           {prices.map((item) => (
-            <div key={item.name} className="flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8">
+            <div
+              key={item.name}
+              className="flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8"
+            >
               <dt>{item.name}</dt>
               <dd className="sm:text-right">
-                <span className="text-lg font-semibold whitespace-nowrap">{item.price}</span>
-                {item.regular ? <span className="block text-sm text-ink-faint">{item.regular}</span> : null}
+                <span className="text-lg font-semibold whitespace-nowrap">
+                  {item.price}
+                </span>
+                {item.regular ? (
+                  <span className="block text-sm text-ink-faint">
+                    {item.regular}
+                  </span>
+                ) : null}
               </dd>
             </div>
           ))}
@@ -539,8 +638,12 @@ export default function Home() {
       <section className="bg-mist px-5 py-24 sm:py-32">
         <div className="mx-auto max-w-2xl">
           <div className="text-center">
-            <h2 className="text-[2rem] font-semibold sm:text-5xl">{OWNER_NAME}</h2>
-            <p className="mt-3 text-ink-soft">{AREA}在住　／　Shopifyパートナー登録済み</p>
+            <h2 className="text-[2rem] font-semibold sm:text-5xl">
+              {OWNER_NAME}
+            </h2>
+            <p className="mt-3 text-ink-soft">
+              {AREA}在住　／　Shopifyパートナー登録済み
+            </p>
           </div>
           <div className="mt-12 space-y-5 text-[1.05rem] text-ink-soft">
             <p>
@@ -552,7 +655,9 @@ export default function Home() {
             <p>
               Shopifyのパートナープログラムに登録していて、お店の制作や運用のお手伝いを仕事としてお受けしています。制作はパートナー用の開発ストアで進めるので、公開するまでお店の費用はかかりません。
             </p>
-            <p>以前は、東南アジアのベトナムで海外営業をしていました。海外のお客さんに向けたお店づくりも、ご相談ください。</p>
+            <p>
+              以前は、東南アジアのベトナムで海外営業をしていました。海外のお客さんに向けたお店づくりも、ご相談ください。
+            </p>
             <p>制作中は毎週、進み具合をご報告します。</p>
           </div>
           <p className="mt-8 text-center">
@@ -590,13 +695,13 @@ export default function Home() {
       </section>
 
       {/* お問い合わせ。森の写真のパネルに、すりガラスの窓を重ねる */}
-      <section id="contact" className="bg-mist px-3 py-24 sm:px-5 sm:py-32">
-        <div className="relative isolate mx-auto flex max-w-[1200px] items-center justify-center overflow-hidden rounded-[28px] px-4 py-20 sm:py-32">
+      <section id="contact">
+        <div className="relative isolate flex min-h-[100svh] items-center justify-center overflow-hidden px-4 py-24">
           <Image
             src={forestImage}
             alt="苔の緑が広がる、木漏れ日の森"
             fill
-            sizes="(min-width: 1200px) 1200px, 100vw"
+            sizes="100vw"
             placeholder="blur"
             className="-z-10 object-cover object-center brightness-110 contrast-110 saturate-[1.35]"
           />
@@ -615,9 +720,11 @@ export default function Home() {
               </Pill>
             </div>
             <p className="mt-6 text-sm text-ink-soft">
-              ボタンが開かないときは：<span className="select-all text-ink">{CONTACT_EMAIL}</span>
+              ボタンが開かないときは：
+              <span className="select-all text-ink">{CONTACT_EMAIL}</span>
               <br />
-              LINE公式アカウント ID：<span className="select-all text-ink">{LINE_ID}</span>
+              LINE公式アカウント ID：
+              <span className="select-all text-ink">{LINE_ID}</span>
             </p>
           </div>
         </div>
@@ -627,11 +734,20 @@ export default function Home() {
         <div className="mx-auto flex max-w-[1024px] flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <nav aria-label="フッター" className="flex flex-wrap gap-x-5 gap-y-2">
             {navItems.map((item) => (
-              <a key={item.href} href={item.href} className="text-ink-soft hover:underline">
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-ink-soft hover:underline"
+              >
                 {item.label}
               </a>
             ))}
-            <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="text-ink-soft hover:underline">
+            <a
+              href={GITHUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink-soft hover:underline"
+            >
               GitHub
             </a>
           </nav>
