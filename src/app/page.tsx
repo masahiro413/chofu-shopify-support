@@ -7,6 +7,7 @@ import {
   DIAGNOSIS_MAILTO,
   OWNER_NAME,
   GITHUB_URL,
+  LINE_URL,
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_URL,
@@ -133,7 +134,7 @@ const prices = [
 ];
 
 const steps = [
-  { title: "URLを送る", body: "お店かSNSのURLと、気になっていることをメールで送ってください。" },
+  { title: "URLを送る", body: "お店かSNSのURLと、気になっていることをメールかLINEで送ってください。" },
   { title: "診断票が届く", body: "直したほうがいい所を3つ、文章でお返しします。ここまで無料です。" },
   { title: "話してみる", body: "続けて相談したい方とは、15分ほどお話しします。調布・世田谷・川崎なら伺います。" },
   { title: "つくる", body: "進め方とお見積もりをお送りし、ご依頼いただいてから制作を始めます。" },
@@ -179,6 +180,20 @@ function PrimaryButton({ children }: { children: React.ReactNode }) {
       className="inline-flex min-h-12 items-center justify-center rounded-[3px] bg-brand px-6 py-3 font-bold text-white hover:bg-brand-strong"
     >
       {children}
+    </a>
+  );
+}
+
+function LineButton() {
+  return (
+    <a
+      href={LINE_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[3px] border-2 border-[#06C755] bg-sheet px-6 py-3 font-bold text-ink hover:bg-[#06C755] hover:text-white"
+    >
+      <span aria-hidden="true" className="inline-block h-2.5 w-2.5 rounded-full bg-[#06C755]" />
+      LINEで相談する
     </a>
   );
 }
@@ -278,6 +293,9 @@ export default function Home() {
           </p>
           <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
             <PrimaryButton>無料診断を申し込む</PrimaryButton>
+            <LineButton />
+          </div>
+          <div className="mt-4">
             <p className="text-sm text-ink-soft">
               メール：<span className="select-all">{CONTACT_EMAIL}</span>
             </p>
@@ -492,9 +510,12 @@ export default function Home() {
               直したほうがいい所を3つ、診断票にしてお返しします。たいてい1日以内にお返事しています。
             </p>
           </div>
-          <div className="space-y-3">
+          <div className="flex flex-col items-stretch gap-3 sm:items-start">
             <PrimaryButton>無料診断を申し込む</PrimaryButton>
+            <LineButton />
             <p className="text-sm text-ink-soft">
+              LINEなら、お店のURLを送るだけで大丈夫です。
+              <br />
               ボタンが開かないときは、こちらへ：
               <br />
               <span className="font-bold text-ink select-all">{CONTACT_EMAIL}</span>
