@@ -39,7 +39,9 @@ export const metadata: Metadata = {
     "WordPress セキュリティ",
   ],
   alternates: { canonical: "/" },
-  verification: { google: "cCzvGd9Z1ou8DabvW7ycL-UGEo_ks7UVZhW3i4rVEq4" },
+  verification: {
+    google: ["cCzvGd9Z1ou8DabvW7ycL-UGEo_ks7UVZhW3i4rVEq4", "pDIJJCiGfCZDbTeiHIKic924vBh-LcbYKxxW6O8gPKc"],
+  },
   openGraph: {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
