@@ -457,6 +457,7 @@ export default function Home() {
           <div>
             <h2 className="text-2xl font-bold sm:text-[2rem]">{OWNER_NAME}</h2>
             <p className="mt-2 text-ink-soft">{AREA}在住</p>
+            <p className="mt-1 text-ink-soft">Shopifyパートナー登録済み</p>
           </div>
           <div className="max-w-[38em] space-y-5 text-ink-soft">
             <p>
@@ -464,6 +465,9 @@ export default function Home() {
             </p>
             <p>
               公開後は受注やお客さま対応をしながら、GA4とShopifyの数字を見て改善してきました。固定費と変動費を分けて損益分岐点を確かめるなど、お店の数字を一緒に見ながら、無理なく続けられる運営を考えます。
+            </p>
+            <p>
+              Shopifyのパートナープログラムに登録していて、お店の制作や運用のお手伝いを仕事としてお受けしています。制作はパートナー用の開発ストアで進めるので、公開するまでお店の費用はかかりません。
             </p>
             <p>制作中は毎週、進み具合をご報告します。</p>
             <p>
