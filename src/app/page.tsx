@@ -234,7 +234,7 @@ function Pill({
 }) {
   const styles = {
     solid: "bg-brand text-white hover:bg-brand-strong",
-    outlineDark: "border border-white/45 text-white hover:border-white hover:bg-white/10",
+    outlineDark: "border border-white/70 bg-black/35 text-white backdrop-blur-sm hover:border-white hover:bg-black/50",
     outlineLight: "border border-brand text-brand hover:bg-brand hover:text-white",
   }[variant];
   return (
@@ -270,7 +270,7 @@ function SectionHead({
 // 最初の画面の主役。実際にお渡しする診断票の見本
 function DiagnosisSheet() {
   return (
-    <figure className="mx-auto max-w-xl text-left">
+    <figure className="mx-auto max-w-xl text-left [text-shadow:none]">
       <div className="rounded-[28px] bg-sheet px-7 py-8 text-ink shadow-[0_30px_80px_-30px_rgba(255,255,255,0.25)] sm:px-10 sm:py-10">
         <div className="flex items-baseline justify-between gap-4 border-b border-rule pb-4">
           <p className="text-lg font-semibold">ショップ診断票</p>
@@ -335,7 +335,7 @@ export default function Home() {
       </header>
 
       {/* 最初の画面 */}
-      <section id="top" className="relative isolate overflow-hidden bg-night px-5 pt-32 pb-24 text-center text-white sm:pt-40">
+      <section id="top" className="relative isolate overflow-hidden bg-night px-5 pt-32 pb-24 text-center text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.65)] sm:pt-40">
         {/* 背景の写真。文字が読めるよう、上から黒を重ねて下に向かって黒へ溶かす */}
         <div aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-[56rem] sm:h-[60rem]">
           <Image
@@ -345,11 +345,12 @@ export default function Home() {
             priority
             sizes="100vw"
             placeholder="blur"
-            className="object-cover object-center"
+            className="object-cover object-center brightness-110 contrast-110 saturate-[1.4]"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/60 to-black" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_55%_45%_at_50%_40%,rgba(0,0,0,0.55),transparent_75%)]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent via-55% to-black" />
         </div>
-        <p className="text-lg font-semibold text-sprout sm:text-xl">{AREA}のShopifyづくり</p>
+        <p className="text-lg font-semibold text-white sm:text-xl">{AREA}のShopifyづくり</p>
         <h1 className="mt-4 text-[2.05rem] font-semibold min-[400px]:text-[2.4rem] sm:text-6xl lg:text-[5.25rem]">
           <span className="inline-block">見つけます。</span>
           <br />
@@ -357,7 +358,7 @@ export default function Home() {
           <br />
           <span className="inline-block">もったいない3つを。</span>
         </h1>
-        <p className="mx-auto mt-8 max-w-2xl text-lg text-white/80 sm:text-xl">
+        <p className="mx-auto mt-8 max-w-2xl text-lg text-white sm:text-xl">
           お店のURLを送ってください。直したほうがいい所を3つ、診断票にしてお返しします。依頼するかどうかは、読んでから決めて大丈夫です。
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -366,7 +367,7 @@ export default function Home() {
             LINEで相談する
           </Pill>
         </div>
-        <p className="mt-5 text-sm text-white/65">
+        <p className="mt-5 text-sm text-white/90">
           メール：<span className="select-all">{CONTACT_EMAIL}</span>
           <span className="mx-2" aria-hidden="true">
             /
