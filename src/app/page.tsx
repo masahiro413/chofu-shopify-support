@@ -1,6 +1,7 @@
 import Image, { type StaticImageData } from "next/image";
 import fleurImage from "../../public/works/fleur.jpg";
 import nekohamaImage from "../../public/works/nekohama.jpg";
+import hanachozuImage from "../../public/works/hanachozu.jpg";
 import { MobileMenu } from "./mobile-menu";
 import {
   AREA,
@@ -361,6 +362,29 @@ export default function Home() {
         </p>
         <div className="mt-20">
           <DiagnosisSheet />
+        </div>
+      </section>
+
+      {/* 写真の大切さ */}
+      <section className="px-5 py-24 sm:py-32">
+        <div className="mx-auto grid max-w-[1024px] items-center gap-12 md:grid-cols-2 md:gap-16">
+          <Image
+            src={hanachozuImage}
+            alt="水を張った鉢に、色とりどりのダリアや小さな花を浮かべた花手水"
+            className="mx-auto w-full max-w-md rounded-[28px] object-cover shadow-[0_30px_60px_-30px_rgba(0,0,0,0.45)]"
+            sizes="(min-width: 768px) 450px, 90vw"
+            placeholder="blur"
+          />
+          <div className="text-center md:text-left">
+            <h2 className="text-[2rem] font-semibold sm:text-5xl">
+              <span className="inline-block">写真が、</span>
+              <span className="inline-block">いちばんの売り場。</span>
+            </h2>
+            <p className="mt-6 text-lg text-ink-soft">
+              ネットのお店では、お客さんは商品を手に取れません。だから、写真を大きく、色や質感まで伝わるように見せることから始めます。
+            </p>
+            <p className="mt-4 text-lg text-ink-soft">スマホで開いた瞬間に「いいな」と思ってもらえる商品ページをつくります。</p>
+          </div>
         </div>
       </section>
 
