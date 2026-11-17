@@ -438,15 +438,7 @@ export default function Home() {
       </section>
 
       {/* セキュリティ */}
-      <section
-        id="security"
-        className="relative isolate overflow-hidden bg-night px-5 py-24 text-white [text-shadow:0_2px_14px_rgba(0,0,0,0.6)] sm:py-32"
-      >
-        {/* 背景のレンガの壁。「お店を守る壁」として */}
-        <div aria-hidden="true" className="absolute inset-0 -z-10">
-          <Image src={brickImage} alt="" fill sizes="100vw" placeholder="blur" className="object-cover object-top saturate-[1.2]" />
-          <div className="absolute inset-0 bg-black/60" />
-        </div>
+      <section id="security" className="bg-night px-3 py-24 text-white sm:px-5 sm:py-32">
         <SectionHead
           dark
           title={
@@ -458,26 +450,37 @@ export default function Home() {
           }
           lead="WordPressやEC-CUBEのように自分でサーバーを持つお店は、PHPやプラグインの更新を続けないと、脆弱性をねらわれることがあります。Shopifyなら、サーバーの管理や更新はShopify側が行います。"
         />
-        <dl className="mx-auto mt-16 grid max-w-[1024px] gap-12 text-center sm:grid-cols-3">
-          <div>
-            <dt className="text-white/85">弱点を見つけた研究者への報奨金</dt>
-            <dd className="mt-2 text-5xl font-semibold text-sprout">最高20万ドル</dd>
-          </div>
-          <div>
-            <dt className="text-white/85">HackerOneの公開プログラム176件のうち</dt>
-            <dd className="mt-2 text-5xl font-semibold text-sprout">5番目</dd>
-            <dd className="mt-2 text-sm text-white/85">に累計100万ドルの支払いへ到達</dd>
-          </div>
-          <div>
-            <dt className="text-white/85">決済まわりの安全基準</dt>
-            <dd className="mt-2 text-5xl font-semibold text-sprout">PCI DSS</dd>
-            <dd className="mt-2 text-sm text-white/85">カード業界の国際基準に対応</dd>
-          </div>
-        </dl>
-        <p className="mx-auto mt-16 max-w-2xl text-center text-white/85">
+        {/* レンガの壁の写真を大きなパネルにして、その上にすりガラスの数字を重ねる */}
+        <div className="relative isolate mx-auto mt-16 max-w-[1200px] overflow-hidden rounded-[28px]">
+          <Image
+            src={brickImage}
+            alt="赤いレンガを積み上げた、がっしりとした壁"
+            fill
+            sizes="(min-width: 1200px) 1200px, 100vw"
+            placeholder="blur"
+            className="-z-10 object-cover object-[50%_35%] brightness-110 contrast-110 saturate-[1.35]"
+          />
+          <dl className="grid gap-4 p-5 sm:grid-cols-3 sm:p-10 md:py-28">
+            {[
+              { label: "弱点を見つけた研究者への報奨金", value: "最高20万ドル" },
+              { label: "HackerOneの公開プログラム176件のうち", value: "5番目", sub: "に累計100万ドルの支払いへ到達" },
+              { label: "決済まわりの安全基準", value: "PCI DSS", sub: "カード業界の国際基準に対応" },
+            ].map((stat) => (
+              <div
+                key={stat.value}
+                className="rounded-2xl bg-black/55 px-6 py-8 text-center ring-1 ring-white/15 backdrop-blur-xl"
+              >
+                <dt className="text-sm text-white/85">{stat.label}</dt>
+                <dd className="mt-2 text-4xl font-semibold text-sprout lg:text-5xl">{stat.value}</dd>
+                {stat.sub ? <dd className="mt-2 text-sm text-white/85">{stat.sub}</dd> : null}
+              </div>
+            ))}
+          </dl>
+        </div>
+        <p className="mx-auto mt-14 max-w-2xl text-center text-white/85">
           追加したアプリや管理画面のパスワードの扱いは、お店側の責任として残ります。引っ越しのときに、二段階認証などお店側でできる対策も一緒に整えます。
         </p>
-        <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-white/70">
+        <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-white/60">
           出典：Shopifyのバグ報奨金ページ、累計100万ドル到達時のShopify Engineeringの発表
         </p>
       </section>
@@ -586,41 +589,38 @@ export default function Home() {
         </div>
       </section>
 
-      {/* お問い合わせ */}
-      <section
-        id="contact"
-        className="relative isolate overflow-hidden bg-night px-5 py-28 text-center text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.65)] sm:py-36"
-      >
-        {/* 背景の森の写真 */}
-        <div aria-hidden="true" className="absolute inset-0 -z-10">
+      {/* お問い合わせ。森の写真のパネルに、すりガラスの窓を重ねる */}
+      <section id="contact" className="bg-mist px-3 py-24 sm:px-5 sm:py-32">
+        <div className="relative isolate mx-auto flex max-w-[1200px] items-center justify-center overflow-hidden rounded-[28px] px-4 py-20 sm:py-32">
           <Image
             src={forestImage}
-            alt=""
+            alt="苔の緑が広がる、木漏れ日の森"
             fill
-            sizes="100vw"
+            sizes="(min-width: 1200px) 1200px, 100vw"
             placeholder="blur"
-            className="object-cover object-center brightness-105 contrast-110 saturate-[1.3]"
+            className="-z-10 object-cover object-center brightness-110 contrast-110 saturate-[1.35]"
           />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_55%_at_50%_50%,rgba(0,0,0,0.55),rgba(0,0,0,0.15)_80%)]" />
+          <div className="w-full max-w-2xl rounded-[24px] bg-white/75 px-6 py-12 text-center text-ink shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] ring-1 ring-white/60 backdrop-blur-2xl sm:px-12">
+            <h2 className="text-[2rem] font-semibold sm:text-5xl">
+              <span className="inline-block">まずは、</span>
+              <span className="inline-block">お店のURLを。</span>
+            </h2>
+            <p className="mx-auto mt-5 max-w-xl text-lg text-ink-soft">
+              直したほうがいい所を3つ、診断票にしてお返しします。1日以内にお返事します。LINEなら、URLを送るだけで大丈夫です。
+            </p>
+            <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Pill href={DIAGNOSIS_MAILTO}>無料診断を申し込む</Pill>
+              <Pill href={LINE_URL} variant="outlineLight" external>
+                LINEで相談する
+              </Pill>
+            </div>
+            <p className="mt-6 text-sm text-ink-soft">
+              ボタンが開かないときは：<span className="select-all text-ink">{CONTACT_EMAIL}</span>
+              <br />
+              LINE公式アカウント ID：<span className="select-all text-ink">{LINE_ID}</span>
+            </p>
+          </div>
         </div>
-        <h2 className="text-[2.2rem] font-semibold sm:text-6xl">
-          <span className="inline-block">まずは、</span>
-          <span className="inline-block">お店のURLを。</span>
-        </h2>
-        <p className="mx-auto mt-6 max-w-xl text-lg text-white/90">
-          直したほうがいい所を3つ、診断票にしてお返しします。1日以内にお返事します。LINEなら、URLを送るだけで大丈夫です。
-        </p>
-        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Pill href={DIAGNOSIS_MAILTO}>無料診断を申し込む</Pill>
-          <Pill href={LINE_URL} variant="outlineDark" external>
-            LINEで相談する
-          </Pill>
-        </div>
-        <p className="mt-6 text-sm text-white/85">
-          ボタンが開かないときは：<span className="select-all text-white/80">{CONTACT_EMAIL}</span>
-          <br />
-          LINE公式アカウント ID：<span className="select-all text-white/80">{LINE_ID}</span>
-        </p>
       </section>
 
       <footer className="bg-mist px-5 py-8 text-xs text-ink-faint">
