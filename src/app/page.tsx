@@ -4,7 +4,8 @@ import nekohamaImage from "../../public/works/nekohama.jpg";
 import hanachozuImage from "../../public/works/hanachozu.jpg";
 import brickImage from "../../public/works/brick.jpg";
 import forestImage from "../../public/works/forest.jpg";
-import { MobileMenu } from "./mobile-menu";
+import { SiteFooter, SiteHeader } from "./site-chrome";
+import { shopifyFeatures } from "@/lib/shopify";
 import {
   AREA,
   CONTACT_EMAIL,
@@ -23,13 +24,6 @@ export const ensureStatic = "navigation";
 
 /* ---------- 内容 ---------- */
 
-const navItems = [
-  { href: "#shopify", label: "Shopifyとは" },
-  { href: "#works", label: "制作例" },
-  { href: "#security", label: "セキュリティ" },
-  { href: "#price", label: "料金" },
-  { href: "#faq", label: "よくある質問" },
-];
 
 // 診断票の見本（架空のお店）
 const sampleFindings = [
@@ -45,30 +39,6 @@ const sampleFindings = [
   {
     issue: "贈り物に選ばれているのに、のしやメッセージカードを選べない",
     fix: "注文画面で選べるようにすると、ギフトの注文が受けやすくなります。",
-  },
-];
-
-// Shopifyの特長（数字は2026年時点の公開情報）
-const shopifyFeatures = [
-  {
-    title: "デザインを自由に",
-    body: "テーマを選んで、ブランドの世界観に合わせて整えます。HTML・CSSと、Shopify独自のLiquidで細かく作り込めます。",
-  },
-  {
-    title: "アプリで機能を足す",
-    body: "13,000以上のアプリから、定期購入やレビュー、多言語化などを必要な分だけ足せます。",
-  },
-  {
-    title: "売る場所をひとつに",
-    body: "InstagramやFacebook、Amazon・楽天などの外部モール、実店舗のレジまで、在庫と注文をまとめて管理できます。",
-  },
-  {
-    title: "海外へ売るのに強い",
-    body: "多言語・多通貨の表示や、海外向けの決済と配送が標準で整っています。",
-  },
-  {
-    title: "AIのアシスタント",
-    body: "管理画面のAIアシスタント「Sidekick」に話しかけて、商品説明づくりや設定の手伝いを頼めます。",
   },
 ];
 
@@ -366,38 +336,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* 上に固定する、半透明の黒いバー */}
-      <header className="fixed inset-x-0 top-0 z-30 h-12 bg-night/80 backdrop-blur-xl backdrop-saturate-150">
-        <div className="mx-auto flex h-full max-w-[1024px] items-center justify-between gap-6 px-5">
-          <a
-            href="#top"
-            className="text-[0.95rem] font-semibold text-white/90 hover:text-white"
-          >
-            {SITE_NAME}
-          </a>
-          <nav
-            aria-label="ページ内メニュー"
-            className="hidden items-center gap-8 text-[0.8rem] md:flex"
-          >
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-white/80 opacity-90 transition-opacity duration-300 hover:text-white hover:opacity-100"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-          <a
-            href="#contact"
-            className="hidden min-h-8 items-center rounded-full bg-brand px-4 text-[0.8rem] font-semibold text-white hover:bg-brand-strong md:inline-flex"
-          >
-            無料診断
-          </a>
-          <MobileMenu items={navItems} lineUrl={LINE_URL} />
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* 最初の画面 */}
       <section
@@ -470,6 +409,9 @@ export default function Home() {
               初期費用はかからず、月額の利用料と、売れたときの決済手数料で使えます。個人のお店向けのベーシックプランは、月4,850円（年払いなら月3,650円）からです。
             </p>
             <p className="mt-4 text-xs text-white/50">料金は2026年時点のShopify公式の日本円価格です。最新の金額は公式サイトでご確認ください。</p>
+            <a href="/shopify" className="chevron mt-8 inline-block text-lg text-[#5ce65c] hover:underline">
+              Shopifyについて、もっと詳しく
+            </a>
           </div>
           <ul className="grid gap-px overflow-hidden rounded-[24px] bg-white/10 sm:grid-cols-2">
             {shopifyFeatures.map((f, i) => (
@@ -784,32 +726,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="bg-mist px-5 py-8 text-xs text-ink-faint">
-        <div className="mx-auto flex max-w-[1024px] flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <nav aria-label="フッター" className="flex flex-wrap gap-x-5 gap-y-2">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-ink-soft hover:underline"
-              >
-                {item.label}
-              </a>
-            ))}
-            <a
-              href={GITHUB_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-ink-soft hover:underline"
-            >
-              GitHub
-            </a>
-          </nav>
-          <p>
-            © {SITE_NAME}（{AREA}）
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

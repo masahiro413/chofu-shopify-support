@@ -69,7 +69,7 @@ export function MobileMenu({ items, lineUrl }: { items: Item[]; lineUrl: string 
         </ul>
         <div className="mt-10 grid gap-3">
           <a
-            href="#contact"
+            href="/#contact"
             onClick={() => setOpen(false)}
             className="inline-flex min-h-12 items-center justify-center rounded-full bg-brand px-6 font-semibold text-white hover:bg-brand-strong"
           >
