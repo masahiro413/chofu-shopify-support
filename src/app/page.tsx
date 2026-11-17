@@ -282,15 +282,17 @@ export default function Home() {
         <div>
           <p className="text-ink-soft">{AREA}で、個人店のShopifyづくりを手伝っています</p>
           <h1 className="mt-5 text-[1.7rem] font-bold min-[400px]:text-[1.9rem] sm:text-[2.4rem] xl:text-[2.6rem]">
-            <span className="inline-block">お店のURLを</span>
-            <span className="inline-block">送ってください。</span>
+            <span className="inline-block">見つけます。</span>
             <br />
-            <span className="inline-block">直したほうがいい所を、</span>
-            <span className="inline-block">3つお返しします。</span>
+            <span className="inline-block">あなたのお店の、</span>
+            <br />
+            <span className="inline-block">
+              もったいない3つを。
+            </span>
           </h1>
           <p className="mt-6 max-w-[34em] text-[1.05rem] text-ink-soft">
-            はじめまして、{OWNER_NAME}です。抹茶のオンラインストアを立ち上げから運営まで手がけてきました。
-            まずは無料で、あなたのお店を見させてください。依頼するかどうかは、診断票を読んでから決めて大丈夫です。
+            お店のURLを送ってください。直したほうがいい所を3つ、診断票にしてお返しします。
+            はじめまして、{OWNER_NAME}です。抹茶のオンラインストアを立ち上げから運営まで手がけてきました。依頼するかどうかは、診断票を読んでから決めて大丈夫です。
           </p>
           <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
             <PrimaryButton>無料診断を申し込む</PrimaryButton>
