@@ -4,6 +4,7 @@ import nekohamaImage from "../../public/works/nekohama.jpg";
 import hanachozuImage from "../../public/works/hanachozu.jpg";
 import brickImage from "../../public/works/brick.jpg";
 import forestImage from "../../public/works/forest.jpg";
+import nightImage from "../../public/works/nightview.jpg";
 import { SiteFooter, SiteHeader } from "./site-chrome";
 import { shopifyFeatures } from "@/lib/shopify";
 import {
@@ -393,7 +394,22 @@ export default function Home() {
       </section>
 
       {/* Shopifyとは */}
-      <section id="shopify" className="bg-[#151a1b] px-5 py-24 text-white sm:py-32">
+      <section
+        id="shopify"
+        className="relative isolate overflow-hidden bg-[#151a1b] px-5 py-24 text-white [text-shadow:0_2px_14px_rgba(0,0,0,0.7)] sm:py-32"
+      >
+        {/* 背景の夜景。左の文字の後ろだけ少し暗くして、街の明かりははっきり見せる */}
+        <div aria-hidden="true" className="absolute inset-0 -z-10">
+          <Image
+            src={nightImage}
+            alt=""
+            fill
+            sizes="(max-width: 768px) 400vw, 100vw"
+            placeholder="blur"
+            className="object-cover object-[50%_80%] brightness-125 contrast-110 saturate-[1.3]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/30 to-transparent" />
+        </div>
         <div className="mx-auto grid max-w-[1100px] gap-14 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
           <div>
             <h2 className="text-[2.2rem] font-semibold sm:text-6xl">
@@ -408,14 +424,14 @@ export default function Home() {
             <p className="mt-4 text-lg text-white/80">
               初期費用はかからず、月額の利用料と、売れたときの決済手数料で使えます。個人のお店向けのベーシックプランは、月4,850円（年払いなら月3,650円）からです。
             </p>
-            <p className="mt-4 text-xs text-white/50">料金は2026年時点のShopify公式の日本円価格です。最新の金額は公式サイトでご確認ください。</p>
+            <p className="mt-4 text-xs text-white/80">料金は2026年時点のShopify公式の日本円価格です。最新の金額は公式サイトでご確認ください。</p>
             <a href="/shopify" className="chevron mt-8 inline-block text-lg text-[#5ce65c] hover:underline">
               Shopifyについて、もっと詳しく
             </a>
           </div>
-          <ul className="grid gap-px overflow-hidden rounded-[24px] bg-white/10 sm:grid-cols-2">
+          <ul className="grid gap-3 sm:grid-cols-2">
             {shopifyFeatures.map((f, i) => (
-              <li key={f.title} className={`bg-[#1d2425] p-7 ${i === shopifyFeatures.length - 1 ? "sm:col-span-2" : ""}`}>
+              <li key={f.title} className={`rounded-[20px] bg-black/40 p-7 ring-1 ring-white/15 backdrop-blur-md ${i === shopifyFeatures.length - 1 ? "sm:col-span-2" : ""}`}>
                 <h3 className="text-xl font-semibold text-[#5ce65c]">{f.title}</h3>
                 <p className="mt-3 text-white/80">{f.body}</p>
               </li>
