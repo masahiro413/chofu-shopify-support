@@ -24,6 +24,7 @@ export const ensureStatic = "navigation";
 /* ---------- 内容 ---------- */
 
 const navItems = [
+  { href: "#shopify", label: "Shopifyとは" },
   { href: "#works", label: "制作例" },
   { href: "#security", label: "セキュリティ" },
   { href: "#price", label: "料金" },
@@ -44,6 +45,30 @@ const sampleFindings = [
   {
     issue: "贈り物に選ばれているのに、のしやメッセージカードを選べない",
     fix: "注文画面で選べるようにすると、ギフトの注文が受けやすくなります。",
+  },
+];
+
+// Shopifyの特長（数字は2026年時点の公開情報）
+const shopifyFeatures = [
+  {
+    title: "デザインを自由に",
+    body: "テーマを選んで、ブランドの世界観に合わせて整えます。HTML・CSSと、Shopify独自のLiquidで細かく作り込めます。",
+  },
+  {
+    title: "アプリで機能を足す",
+    body: "13,000以上のアプリから、定期購入やレビュー、多言語化などを必要な分だけ足せます。",
+  },
+  {
+    title: "売る場所をひとつに",
+    body: "InstagramやFacebook、Amazon・楽天などの外部モール、実店舗のレジまで、在庫と注文をまとめて管理できます。",
+  },
+  {
+    title: "海外へ売るのに強い",
+    body: "多言語・多通貨の表示や、海外向けの決済と配送が標準で整っています。",
+  },
+  {
+    title: "AIのアシスタント",
+    body: "管理画面のAIアシスタント「Sidekick」に話しかけて、商品説明づくりや設定の手伝いを頼めます。",
   },
 ];
 
@@ -425,6 +450,35 @@ export default function Home() {
         </p>
         <div className="mt-20">
           <DiagnosisSheet />
+        </div>
+      </section>
+
+      {/* Shopifyとは */}
+      <section id="shopify" className="bg-[#151a1b] px-5 py-24 text-white sm:py-32">
+        <div className="mx-auto grid max-w-[1100px] gap-14 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
+          <div>
+            <h2 className="text-[2.2rem] font-semibold sm:text-6xl">
+              <span className="inline-block">お店のすべてを、</span>
+              <br />
+              <span className="inline-block">Shopifyで。</span>
+            </h2>
+            <span aria-hidden="true" className="mt-8 block h-1 w-40 rounded-full bg-[#5ce65c]" />
+            <p className="mt-8 text-lg text-white/80">
+              Shopifyは、カナダのShopify Inc.が運営する、世界最大級のネットショップの仕組みです。175以上の国と地域で、数百万のお店に使われています。
+            </p>
+            <p className="mt-4 text-lg text-white/80">
+              初期費用はかからず、月額の利用料と、売れたときの決済手数料で使えます。個人のお店向けのベーシックプランは、月4,850円（年払いなら月3,650円）からです。
+            </p>
+            <p className="mt-4 text-xs text-white/50">料金は2026年時点のShopify公式の日本円価格です。最新の金額は公式サイトでご確認ください。</p>
+          </div>
+          <ul className="grid gap-px overflow-hidden rounded-[24px] bg-white/10 sm:grid-cols-2">
+            {shopifyFeatures.map((f, i) => (
+              <li key={f.title} className={`bg-[#1d2425] p-7 ${i === shopifyFeatures.length - 1 ? "sm:col-span-2" : ""}`}>
+                <h3 className="text-xl font-semibold text-[#5ce65c]">{f.title}</h3>
+                <p className="mt-3 text-white/80">{f.body}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
