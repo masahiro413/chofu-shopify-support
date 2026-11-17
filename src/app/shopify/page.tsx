@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import pineappleImage from "../../../public/works/pineapple.png";
+import nightImage from "../../../public/works/nightview.jpg";
 import { shopifyFeatures } from "@/lib/shopify";
 import { DIAGNOSIS_MAILTO, LINE_URL, SITE_NAME } from "@/lib/site";
 import { SiteFooter, SiteHeader } from "../site-chrome";
@@ -75,14 +76,26 @@ export default function ShopifyPage() {
         </div>
       </section>
 
-      {/* 数字 */}
-      <section className="bg-mist px-5 py-20 sm:py-28">
-        <dl className="mx-auto grid max-w-[1100px] gap-4 sm:grid-cols-3">
+      {/* 数字。夜景の写真の上に、すりガラスの数字を重ねる */}
+      <section className="relative isolate overflow-hidden px-5 py-28 text-white sm:py-40">
+        <Image
+          src={nightImage}
+          alt=""
+          fill
+          sizes="100vw"
+          placeholder="blur"
+          className="-z-10 object-cover object-[50%_70%] brightness-110 contrast-110 saturate-[1.3]"
+        />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-b from-[#151a1b] via-transparent via-40% to-black/40" />
+        <h2 className="mx-auto max-w-3xl text-center text-[2rem] font-semibold [text-shadow:0_2px_16px_rgba(0,0,0,0.6)] sm:text-5xl">
+          世界中の街で、使われています。
+        </h2>
+        <dl className="mx-auto mt-14 grid max-w-[1100px] gap-4 sm:grid-cols-3">
           {numbers.map((n) => (
-            <div key={n.value} className="rounded-[28px] bg-sheet px-8 py-10 text-center">
+            <div key={n.value} className="rounded-[28px] bg-black/45 px-8 py-10 text-center ring-1 ring-white/15 backdrop-blur-xl">
               <dt className="sr-only">{n.label}</dt>
-              <dd className="text-[2.75rem] font-semibold whitespace-nowrap text-brand lg:text-[3.25rem]">{n.value}</dd>
-              <dd className="mt-3 text-ink-soft">{n.label}</dd>
+              <dd className="text-[2.75rem] font-semibold whitespace-nowrap text-[#5ce65c] lg:text-[3.25rem]">{n.value}</dd>
+              <dd className="mt-3 text-white/85">{n.label}</dd>
             </div>
           ))}
         </dl>
