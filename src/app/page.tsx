@@ -335,7 +335,20 @@ export default function Home() {
       </header>
 
       {/* 最初の画面 */}
-      <section id="top" className="bg-night px-5 pt-32 pb-24 text-center text-white sm:pt-40">
+      <section id="top" className="relative isolate overflow-hidden bg-night px-5 pt-32 pb-24 text-center text-white sm:pt-40">
+        {/* 背景の写真。文字が読めるよう、上から黒を重ねて下に向かって黒へ溶かす */}
+        <div aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-[56rem] sm:h-[60rem]">
+          <Image
+            src={hanachozuImage}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            placeholder="blur"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/60 to-black" />
+        </div>
         <p className="text-lg font-semibold text-sprout sm:text-xl">{AREA}のShopifyづくり</p>
         <h1 className="mt-4 text-[2.05rem] font-semibold min-[400px]:text-[2.4rem] sm:text-6xl lg:text-[5.25rem]">
           <span className="inline-block">見つけます。</span>
@@ -344,7 +357,7 @@ export default function Home() {
           <br />
           <span className="inline-block">もったいない3つを。</span>
         </h1>
-        <p className="mx-auto mt-8 max-w-2xl text-lg text-[#a1a1a6] sm:text-xl">
+        <p className="mx-auto mt-8 max-w-2xl text-lg text-white/80 sm:text-xl">
           お店のURLを送ってください。直したほうがいい所を3つ、診断票にしてお返しします。依頼するかどうかは、読んでから決めて大丈夫です。
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -353,7 +366,7 @@ export default function Home() {
             LINEで相談する
           </Pill>
         </div>
-        <p className="mt-5 text-sm text-ink-faint">
+        <p className="mt-5 text-sm text-white/65">
           メール：<span className="select-all">{CONTACT_EMAIL}</span>
           <span className="mx-2" aria-hidden="true">
             /
@@ -362,29 +375,6 @@ export default function Home() {
         </p>
         <div className="mt-20">
           <DiagnosisSheet />
-        </div>
-      </section>
-
-      {/* 写真の大切さ */}
-      <section className="px-5 py-24 sm:py-32">
-        <div className="mx-auto grid max-w-[1024px] items-center gap-12 md:grid-cols-2 md:gap-16">
-          <Image
-            src={hanachozuImage}
-            alt="水を張った鉢に、色とりどりのダリアや小さな花を浮かべた花手水"
-            className="mx-auto w-full max-w-md rounded-[28px] object-cover shadow-[0_30px_60px_-30px_rgba(0,0,0,0.45)]"
-            sizes="(min-width: 768px) 450px, 90vw"
-            placeholder="blur"
-          />
-          <div className="text-center md:text-left">
-            <h2 className="text-[2rem] font-semibold sm:text-5xl">
-              <span className="inline-block">写真が、</span>
-              <span className="inline-block">いちばんの売り場。</span>
-            </h2>
-            <p className="mt-6 text-lg text-ink-soft">
-              ネットのお店では、お客さんは商品を手に取れません。だから、写真を大きく、色や質感まで伝わるように見せることから始めます。
-            </p>
-            <p className="mt-4 text-lg text-ink-soft">スマホで開いた瞬間に「いいな」と思ってもらえる商品ページをつくります。</p>
-          </div>
         </div>
       </section>
 
