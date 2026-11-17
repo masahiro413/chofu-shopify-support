@@ -1,6 +1,7 @@
 import Image, { type StaticImageData } from "next/image";
 import fleurImage from "../../public/works/fleur.jpg";
 import nekohamaImage from "../../public/works/nekohama.jpg";
+import { MobileMenu } from "./mobile-menu";
 import {
   AREA,
   CONTACT_EMAIL,
@@ -90,7 +91,10 @@ const works: Work[] = [
     image: fleurImage,
     alt: "Fleur Sereineのトップページ。ドライフラワーのブーケの写真",
     body: "ブーケやリースの写真が主役になるよう、文字と飾りを控えた落ち着いた作りにしました。",
-    details: ["商品写真を大きく見せるトップページ", "ブーケ・リース・スワッグの分類"],
+    details: [
+      "商品写真を大きく見せるトップページ",
+      "ブーケ・リース・スワッグの分類",
+    ],
   },
   {
     name: "Univasal DVD Classic",
@@ -103,15 +107,27 @@ const works: Work[] = [
 const services = [
   {
     group: "つくる",
-    items: ["新しいお店の立ち上げ", "デザイン・商品登録・決済と送料の設定", "スマホで買いやすい商品ページ"],
+    items: [
+      "新しいお店の立ち上げ",
+      "デザイン・商品登録・決済と送料の設定",
+      "スマホで買いやすい商品ページ",
+    ],
   },
   {
     group: "引っ越す",
-    items: ["BASE・カラーミー・STORESから", "WordPress・EC-CUBEから", "商品と顧客の情報を引き継ぎ"],
+    items: [
+      "BASE・カラーミー・STORESから",
+      "WordPress・EC-CUBEから",
+      "商品と顧客の情報を引き継ぎ",
+    ],
   },
   {
     group: "海外へ売る",
-    items: ["円・ドルなど多通貨での表示", "英語など多言語のページづくり", "海外配送と国ごとの送料の設定"],
+    items: [
+      "円・ドルなど多通貨での表示",
+      "英語など多言語のページづくり",
+      "海外配送と国ごとの送料の設定",
+    ],
   },
   {
     group: "続ける",
@@ -128,17 +144,41 @@ const prices = [
   { name: "スポット相談（1時間）", price: "3,300円" },
   { name: "ちょっとした修正（1回）", price: "3,300円〜" },
   { name: "ほかのカートからの引っ越し", price: "30,000円〜" },
-  { name: "はじめての開店（テーマを活かしてシンプルに）", price: "50,000円〜", regular: "通常 80,000円〜" },
-  { name: "しっかり作る（デザイン調整を含む）", price: "120,000円〜", regular: "通常 150,000円〜" },
+  {
+    name: "はじめての開店（テーマを活かしてシンプルに）",
+    price: "50,000円〜",
+    regular: "通常 80,000円〜",
+  },
+  {
+    name: "しっかり作る（デザイン調整を含む）",
+    price: "120,000円〜",
+    regular: "通常 150,000円〜",
+  },
   { name: "ライトサポート（修正・商品追加・ご相談）", price: "月5,000円" },
-  { name: "しっかりサポート（特集の更新・売上を見ながら改善）", price: "月10,000円〜", regular: "通常 月20,000円〜" },
+  {
+    name: "しっかりサポート（特集の更新・売上を見ながら改善）",
+    price: "月10,000円〜",
+    regular: "通常 月20,000円〜",
+  },
 ];
 
 const steps = [
-  { title: "URLを送る", body: "お店かSNSのURLと、気になっていることをメールかLINEで送ってください。" },
-  { title: "診断票が届く", body: "直したほうがいい所を3つ、文章でお返しします。ここまで無料です。" },
-  { title: "話してみる", body: "続けて相談したい方とは、15分ほどお話しします。調布・世田谷・川崎なら伺います。" },
-  { title: "つくる", body: "進め方とお見積もりをお送りし、ご依頼いただいてから制作を始めます。" },
+  {
+    title: "URLを送る",
+    body: "お店かSNSのURLと、気になっていることをメールかLINEで送ってください。",
+  },
+  {
+    title: "診断票が届く",
+    body: "直したほうがいい所を3つ、文章でお返しします。ここまで無料です。",
+  },
+  {
+    title: "話してみる",
+    body: "続けて相談したい方とは、15分ほどお話しします。調布・世田谷・川崎なら伺います。",
+  },
+  {
+    title: "つくる",
+    body: "進め方とお見積もりをお送りし、ご依頼いただいてから制作を始めます。",
+  },
 ];
 
 const faqs = [
@@ -169,7 +209,12 @@ const jsonLd = {
   email: CONTACT_EMAIL,
   founder: { "@type": "Person", name: OWNER_NAME, sameAs: [GITHUB_URL] },
   areaServed: ["東京都調布市", "東京都世田谷区", "神奈川県川崎市", "日本"],
-  address: { "@type": "PostalAddress", addressLocality: "調布市", addressRegion: "東京都", addressCountry: "JP" },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "調布市",
+    addressRegion: "東京都",
+    addressCountry: "JP",
+  },
 };
 
 /* ---------- 部品 ---------- */
@@ -193,13 +238,22 @@ function LineButton() {
       rel="noopener noreferrer"
       className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[3px] border-2 border-[#06C755] bg-sheet px-6 py-3 font-bold text-ink hover:bg-[#06C755] hover:text-white"
     >
-      <span aria-hidden="true" className="inline-block h-2.5 w-2.5 rounded-full bg-[#06C755]" />
+      <span
+        aria-hidden="true"
+        className="inline-block h-2.5 w-2.5 rounded-full bg-[#06C755]"
+      />
       LINEで相談する
     </a>
   );
 }
 
-function SectionTitle({ children, lead }: { children: React.ReactNode; lead?: React.ReactNode }) {
+function SectionTitle({
+  children,
+  lead,
+}: {
+  children: React.ReactNode;
+  lead?: React.ReactNode;
+}) {
   return (
     <div className="max-w-2xl">
       <h2 className="text-2xl font-bold sm:text-[2rem]">{children}</h2>
@@ -223,15 +277,28 @@ function DiagnosisSheet() {
 
         <ol className="mt-6 space-y-6">
           {sampleFindings.map((finding, index) => (
-            <li key={finding.issue} className="grid grid-cols-[2rem_1fr] gap-x-3">
-              <span className="font-hand text-2xl leading-none font-semibold text-leaf">{index + 1}</span>
+            <li
+              key={finding.issue}
+              className="grid grid-cols-[2rem_1fr] gap-x-3"
+            >
+              <span className="font-hand text-2xl leading-none font-semibold text-leaf">
+                {index + 1}
+              </span>
               <div>
                 <p className="font-bold leading-relaxed">
-                  {index === 0 ? <span className="marker">{finding.issue}</span> : finding.issue}
+                  {index === 0 ? (
+                    <span className="marker">{finding.issue}</span>
+                  ) : (
+                    finding.issue
+                  )}
                 </p>
-                <p className="mt-1 font-hand text-[1.05rem] leading-relaxed text-ink-soft">{finding.fix}</p>
+                <p className="mt-1 font-hand text-[1.05rem] leading-relaxed text-ink-soft">
+                  {finding.fix}
+                </p>
                 {finding.note ? (
-                  <p className="mt-2 font-hand text-[1.05rem] font-semibold text-leaf">― {finding.note}</p>
+                  <p className="mt-2 font-hand text-[1.05rem] font-semibold text-leaf">
+                    ― {finding.note}
+                  </p>
                 ) : null}
               </div>
             </li>
@@ -254,45 +321,63 @@ function DiagnosisSheet() {
 export default function Home() {
   return (
     <main className="min-h-screen bg-paper text-ink">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       <header className="sticky top-0 z-20 border-b border-rule bg-paper/95 backdrop-blur-sm">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-3 sm:px-8">
           <a href="#top" className="font-bold">
             {SITE_NAME}
           </a>
-          <nav aria-label="ページ内メニュー" className="hidden items-center gap-7 text-[0.95rem] md:flex">
+          <nav
+            aria-label="ページ内メニュー"
+            className="hidden items-center gap-7 text-[0.95rem] md:flex"
+          >
             {navItems.map((item) => (
-              <a key={item.href} href={item.href} className="text-ink-soft hover:text-ink hover:underline">
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-ink-soft hover:text-ink hover:underline"
+              >
                 {item.label}
               </a>
             ))}
           </nav>
-          <a
-            href="#contact"
-            className="inline-flex min-h-11 items-center rounded-[3px] border-2 border-brand px-4 text-sm font-bold text-brand hover:bg-brand hover:text-white"
-          >
-            無料診断
-          </a>
+          <div className="flex items-center gap-2">
+            <a
+              href="#contact"
+              className="inline-flex min-h-11 items-center rounded-[3px] border-2 border-brand px-4 text-sm font-bold text-brand hover:bg-brand hover:text-white"
+            >
+              無料診断
+            </a>
+            <MobileMenu items={navItems} lineUrl={LINE_URL} />
+          </div>
         </div>
       </header>
 
       {/* 最初の画面 */}
-      <section id="top" className="mx-auto grid max-w-6xl gap-14 px-5 pt-14 pb-20 sm:px-8 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-16 lg:pt-20 lg:pb-28">
+      <section
+        id="top"
+        className="mx-auto grid max-w-6xl gap-14 px-5 pt-14 pb-20 sm:px-8 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-16 lg:pt-20 lg:pb-28"
+      >
         <div>
-          <p className="text-ink-soft">{AREA}で、個人店のShopifyづくりを手伝っています</p>
+          <p className="text-ink-soft">
+            {AREA}で、個人店のShopifyづくりを手伝っています
+          </p>
           <h1 className="mt-5 text-[1.7rem] font-bold min-[400px]:text-[1.9rem] sm:text-[2.4rem] xl:text-[2.6rem]">
             <span className="inline-block">見つけます。</span>
             <br />
             <span className="inline-block">あなたのお店の、</span>
             <br />
-            <span className="inline-block">
-              もったいない3つを。
-            </span>
+            <span className="inline-block">もったいない3つを。</span>
           </h1>
           <p className="mt-6 max-w-[34em] text-[1.05rem] text-ink-soft">
-            お店のURLを送ってください。直したほうがいい所を3つ、診断票にしてお返しします。<br />
-            はじめまして、{OWNER_NAME}です。抹茶のオンラインストアを立ち上げから運営まで手がけてきました。依頼するかどうかは、診断票を読んでから決めて大丈夫です。
+            お店のURLを送ってください。直したほうがいい所を3つ、診断票にしてお返しします。
+            <br />
+            はじめまして、{OWNER_NAME}
+            です。抹茶のオンラインストアを立ち上げから運営まで手がけてきました。依頼するかどうかは、診断票を読んでから決めて大丈夫です。
           </p>
           <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
             <PrimaryButton>無料診断を申し込む</PrimaryButton>
@@ -303,7 +388,8 @@ export default function Home() {
               メール：<span className="select-all">{CONTACT_EMAIL}</span>
             </p>
             <p className="mt-1 text-sm text-ink-soft">
-              LINE公式アカウントもやっています（ID：<span className="select-all">{LINE_ID}</span>）
+              LINE公式アカウントもやっています（ID：
+              <span className="select-all">{LINE_ID}</span>）
             </p>
           </div>
         </div>
@@ -349,8 +435,12 @@ export default function Home() {
                   />
                 ) : (
                   <div className="flex aspect-[16/10] w-full flex-col items-center justify-center bg-[#13213f] text-[#d4b25a]">
-                    <p className="font-serif text-3xl tracking-wide">Univasal</p>
-                    <p className="mt-1 font-serif text-sm tracking-[0.35em]">DVD CLASSIC</p>
+                    <p className="font-serif text-3xl tracking-wide">
+                      Univasal
+                    </p>
+                    <p className="mt-1 font-serif text-sm tracking-[0.35em]">
+                      DVD CLASSIC
+                    </p>
                   </div>
                 )}
               </div>
@@ -361,7 +451,10 @@ export default function Home() {
                 <ul className="mt-5 space-y-1.5 text-[0.95rem]">
                   {work.details.map((d) => (
                     <li key={d} className="flex gap-3">
-                      <span aria-hidden="true" className="mt-[0.8em] h-px w-3 flex-none bg-ink" />
+                      <span
+                        aria-hidden="true"
+                        className="mt-[0.8em] h-px w-3 flex-none bg-ink"
+                      />
                       {d}
                     </li>
                   ))}
@@ -389,13 +482,15 @@ export default function Home() {
               <strong className="text-sprout">最高20万ドル</strong>
               の報奨金を出しています。脆弱性診断の大手HackerOneでは、176ある公開プログラムのうち
               <strong className="text-sprout">5番目に、累計100万ドル</strong>
-              の報奨金支払いに届きました。決済まわりは、カード業界の国際基準PCI DSSに対応しています。
+              の報奨金支払いに届きました。決済まわりは、カード業界の国際基準PCI
+              DSSに対応しています。
             </p>
             <p className="border-t border-white/25 pt-6 text-[0.95rem] text-white/70">
               追加したアプリや管理画面のパスワードの扱いは、お店側の責任として残ります。引っ越しのときに、二段階認証などお店側でできる対策も一緒に整えます。
             </p>
             <p className="text-xs text-white/55">
-              出典：Shopifyのバグ報奨金ページ、累計100万ドル到達時のShopify Engineeringの発表
+              出典：Shopifyのバグ報奨金ページ、累計100万ドル到達時のShopify
+              Engineeringの発表
             </p>
           </div>
         </div>
@@ -432,7 +527,11 @@ export default function Home() {
                   <span aria-hidden="true" className="leader" />
                   <dd className="font-bold whitespace-nowrap">{item.price}</dd>
                 </div>
-                {item.regular ? <p className="text-right text-sm text-ink-soft">{item.regular}</p> : null}
+                {item.regular ? (
+                  <p className="text-right text-sm text-ink-soft">
+                    {item.regular}
+                  </p>
+                ) : null}
               </div>
             ))}
           </dl>
@@ -471,7 +570,9 @@ export default function Home() {
             <p>
               Shopifyのパートナープログラムに登録していて、お店の制作や運用のお手伝いを仕事としてお受けしています。制作はパートナー用の開発ストアで進めるので、公開するまでお店の費用はかかりません。
             </p>
-            <p>以前は、東南アジアのベトナムで海外営業をしていました。海外のお客さんに向けたお店づくりも、ご相談ください。</p>
+            <p>
+              以前は、東南アジアのベトナムで海外営業をしていました。海外のお客さんに向けたお店づくりも、ご相談ください。
+            </p>
             <p>制作中は毎週、進み具合をご報告します。</p>
             <p>
               これまでに書いたコードは
@@ -498,10 +599,16 @@ export default function Home() {
               <details key={faq.q} className="group">
                 <summary className="flex min-h-14 cursor-pointer items-center justify-between gap-6 py-4 font-bold">
                   {faq.q}
-                  <span aria-hidden="true" className="text-xl text-brand group-open:hidden">
+                  <span
+                    aria-hidden="true"
+                    className="text-xl text-brand group-open:hidden"
+                  >
                     ＋
                   </span>
-                  <span aria-hidden="true" className="hidden text-xl text-brand group-open:inline">
+                  <span
+                    aria-hidden="true"
+                    className="hidden text-xl text-brand group-open:inline"
+                  >
                     −
                   </span>
                 </summary>
@@ -513,10 +620,15 @@ export default function Home() {
       </section>
 
       {/* お問い合わせ */}
-      <section id="contact" className="mx-auto w-full max-w-6xl px-5 py-24 sm:px-8">
+      <section
+        id="contact"
+        className="mx-auto w-full max-w-6xl px-5 py-24 sm:px-8"
+      >
         <div className="grid gap-10 border-2 border-ink bg-sheet px-6 py-12 sm:px-12 lg:grid-cols-[1.4fr_1fr] lg:items-center">
           <div>
-            <h2 className="text-2xl font-bold sm:text-[2rem]">まずは、お店のURLを送ってください</h2>
+            <h2 className="text-2xl font-bold sm:text-[2rem]">
+              まずは、お店のURLを送ってください
+            </h2>
             <p className="mt-4 max-w-[34em] text-ink-soft">
               直したほうがいい所を3つ、診断票にしてお返しします。たいてい1日以内にお返事しています。
             </p>
@@ -525,11 +637,14 @@ export default function Home() {
             <PrimaryButton>無料診断を申し込む</PrimaryButton>
             <LineButton />
             <p className="text-sm text-ink-soft">
-              LINE公式アカウントもやっています（ID：{LINE_ID}）。LINEなら、お店のURLを送るだけで大丈夫です。
+              LINE公式アカウントもやっています（ID：{LINE_ID}
+              ）。LINEなら、お店のURLを送るだけで大丈夫です。
               <br />
               ボタンが開かないときは、こちらへ：
               <br />
-              <span className="font-bold text-ink select-all">{CONTACT_EMAIL}</span>
+              <span className="font-bold text-ink select-all">
+                {CONTACT_EMAIL}
+              </span>
             </p>
           </div>
         </div>
@@ -541,10 +656,18 @@ export default function Home() {
             {SITE_NAME}（{AREA}）
           </span>
           <span>
-            <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-ink">
+            <a
+              href={GITHUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-4 hover:text-ink"
+            >
               GitHub
             </a>
-            <span className="mx-3" aria-hidden="true">/</span>© {SITE_NAME}
+            <span className="mx-3" aria-hidden="true">
+              /
+            </span>
+            © {SITE_NAME}
           </span>
         </div>
       </footer>
