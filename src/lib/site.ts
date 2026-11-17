@@ -1,5 +1,11 @@
 // サイト全体で使う基本情報。公開するドメインが決まったら SITE_URL を書き換えてください。
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
+// 公開URL。独自ドメインを使うときは NEXT_PUBLIC_SITE_URL を設定。
+// 未設定ならVercelの本番URL（例: chofu-shopify-support.vercel.app）を自動で使う。
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "https://example.com");
 
 export const SITE_NAME = "調布Shopifyサポート";
 export const OWNER_NAME = "鹿野将広";
