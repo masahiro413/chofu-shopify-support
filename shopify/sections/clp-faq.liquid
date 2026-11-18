@@ -1,0 +1,46 @@
+<div class="clp">
+<section id="faq" class="bg-white px-5 py-24 text-[#1d1d1f] sm:py-32">
+  <h2 class="text-center text-3xl font-semibold sm:text-5xl">{{ section.settings.heading }}</h2>
+  <div class="mx-auto mt-14 max-w-3xl divide-y divide-[#d2d2d7] border-y border-[#d2d2d7]">
+    {%- for block in section.blocks -%}<details class="group" {{ block.shopify_attributes }}><summary class="flex min-h-16 cursor-pointer list-none items-center justify-between gap-6 py-5 text-lg font-semibold">{{ block.settings.q }}<span aria-hidden="true" class="text-2xl font-light text-[#6e6e73] transition-transform group-open:rotate-45">+</span></summary><p class="pb-6 text-[#6e6e73]">{{ block.settings.a }}</p></details>{%- endfor -%}
+  </div>
+</section>
+</div>
+
+{% schema %}
+{
+  "name": "LP：よくある質問",
+  "tag": "section",
+  "class": "clp-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "見出し"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "質問",
+      "settings": [
+        {
+          "type": "text",
+          "id": "q",
+          "label": "質問"
+        },
+        {
+          "type": "textarea",
+          "id": "a",
+          "label": "答え"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LP：よくある質問"
+    }
+  ]
+}
+{% endschema %}

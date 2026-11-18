@@ -1,0 +1,80 @@
+<div class="clp">
+{%- if section.settings.image != blank -%}{%- assign img = section.settings.image | image_url: width: 2000 -%}{%- else -%}{%- assign img = section.settings.image_src -%}{%- endif -%}
+<section id="contact" class="relative isolate flex min-h-[100svh] items-center justify-center overflow-hidden px-4 py-24 text-[#1d1d1f]">
+  {%- if img != blank -%}<img src="{{ img }}" alt="{{ section.settings.image_alt | escape }}" class="absolute inset-0 -z-10 size-full object-cover brightness-110 contrast-110 saturate-150" loading="lazy">{%- endif -%}
+  <div class="w-full max-w-2xl rounded-[24px] bg-white/75 px-6 py-12 text-center shadow-2xl ring-1 ring-white/60 backdrop-blur-2xl sm:px-12">
+    <h2 class="text-3xl font-semibold sm:text-5xl">{{ section.settings.heading }}</h2>
+    <p class="mx-auto mt-5 max-w-xl text-lg text-[#6e6e73]">{{ section.settings.lead }}</p>
+    <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      {%- if section.settings.btn1_label != blank -%}<a href="{{ section.settings.btn1_url }}" class="inline-flex min-h-12 items-center justify-center rounded-full px-7 text-lg font-semibold bg-[#008060] text-white hover:bg-[#006e52]"{% if section.settings.btn1_url contains 'http' %} target="_blank" rel="noopener"{% endif %}>{{ section.settings.btn1_label }}</a>{%- endif -%}
+      {%- if section.settings.btn2_label != blank -%}<a href="{{ section.settings.btn2_url }}" class="inline-flex min-h-12 items-center justify-center rounded-full px-7 text-lg font-semibold border border-[#008060] text-[#008060] hover:bg-[#008060] hover:text-white"{% if section.settings.btn2_url contains 'http' %} target="_blank" rel="noopener"{% endif %}>{{ section.settings.btn2_label }}</a>{%- endif -%}
+    </div>
+    <p class="mt-6 text-sm text-[#6e6e73]">{{ section.settings.note | newline_to_br }}</p>
+  </div>
+</section>
+</div>
+
+{% schema %}
+{
+  "name": "LP：お問い合わせ",
+  "tag": "section",
+  "class": "clp-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "写真"
+    },
+    {
+      "type": "text",
+      "id": "image_src",
+      "label": "写真のURL（写真を選んでいないときに使用）"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "写真の説明"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "見出し"
+    },
+    {
+      "type": "textarea",
+      "id": "lead",
+      "label": "説明文"
+    },
+    {
+      "type": "text",
+      "id": "btn1_label",
+      "label": "ボタン1の文字"
+    },
+    {
+      "type": "text",
+      "id": "btn1_url",
+      "label": "ボタン1のリンク"
+    },
+    {
+      "type": "text",
+      "id": "btn2_label",
+      "label": "ボタン2の文字"
+    },
+    {
+      "type": "text",
+      "id": "btn2_url",
+      "label": "ボタン2のリンク"
+    },
+    {
+      "type": "textarea",
+      "id": "note",
+      "label": "ボタン下の文字"
+    }
+  ],
+  "presets": [
+    {
+      "name": "LP：お問い合わせ"
+    }
+  ]
+}
+{% endschema %}

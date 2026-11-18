@@ -1,0 +1,487 @@
+{
+  "sections": {
+    "clp_hero": {
+      "type": "clp-hero",
+      "settings": {
+        "image_src": "https://chofu-shopify-support-7e1k.vercel.app/works/hanachozu.jpg",
+        "eyebrow": "東京都調布市のShopifyづくり",
+        "heading": "見つけます。\nあなたのお店の、\nもったいない3つを。",
+        "lead": "お店のURLを送ってください。直したほうがいい所を3つ、診断票にしてお返しします。依頼するかどうかは、読んでから決めて大丈夫です。",
+        "btn1_label": "無料診断を申し込む",
+        "btn1_url": "mailto:masahirokano503@gmail.com?subject=%E7%84%A1%E6%96%99%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97%E8%A8%BA%E6%96%AD%E3%81%AE%E7%94%B3%E3%81%97%E8%BE%BC%E3%81%BF",
+        "btn2_label": "LINEで相談する",
+        "btn2_url": "https://lin.ee/7KMHHYB",
+        "note": "メール：masahirokano503@gmail.com ／ LINE公式アカウント（ID：@827bzpuz）",
+        "sheet_title": "ショップ診断票",
+        "sheet_tag": "見本",
+        "sheet_lead": "焼き菓子のオンラインショップ（架空のお店）を見て、気づいたこと",
+        "sheet_sign": "調布Shopifyサポート　鹿野将広",
+        "sheet_caption": "無料診断では、こんな診断票をお送りしています。"
+      },
+      "blocks": {
+        "finding_1": {
+          "type": "finding",
+          "settings": {
+            "issue": "スマホで商品ページを開くと、「カートに入れる」が画面の外に出ている",
+            "fix": "写真のすぐ下に移すだけで、買い物の途中で迷う人が減ります。",
+            "note": "ここがいちばん、もったいない"
+          }
+        },
+        "finding_2": {
+          "type": "finding",
+          "settings": {
+            "issue": "送料の金額が、ご利用ガイドと商品ページで違っている",
+            "fix": "1か所にまとめて、どのページからも同じ説明を見られるようにします。",
+            "note": ""
+          }
+        },
+        "finding_3": {
+          "type": "finding",
+          "settings": {
+            "issue": "贈り物に選ばれているのに、のしやメッセージカードを選べない",
+            "fix": "注文画面で選べるようにすると、ギフトの注文が受けやすくなります。",
+            "note": ""
+          }
+        }
+      },
+      "block_order": [
+        "finding_1",
+        "finding_2",
+        "finding_3"
+      ]
+    },
+    "clp_shopify": {
+      "type": "clp-shopify",
+      "settings": {
+        "image_src": "https://chofu-shopify-support-7e1k.vercel.app/works/nightview-full.jpg",
+        "image_alt": "高いビルと川、街の明かりが地平線まで広がる夜景",
+        "heading": "お店のすべてを、\nShopifyで。",
+        "body": "<p>Shopifyは、カナダのShopify Inc.が運営する、世界最大級のネットショップの仕組みです。175以上の国と地域で、数百万のお店に使われています。</p><p>初期費用はかからず、月額の利用料と、売れたときの決済手数料で使えます。個人のお店向けのベーシックプランは、月4,850円（年払いなら月3,650円）からです。</p>",
+        "note": "料金は2026年時点のShopify公式の日本円価格です。最新の金額は公式サイトでご確認ください。"
+      },
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "title": "デザインを自由に",
+            "body": "テーマを選んで、ブランドの世界観に合わせて整えます。HTML・CSSと、Shopify独自のLiquidで細かく作り込めます。"
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "title": "アプリで機能を足す",
+            "body": "13,000以上のアプリから、定期購入やレビュー、多言語化などを必要な分だけ足せます。"
+          }
+        },
+        "feature_3": {
+          "type": "feature",
+          "settings": {
+            "title": "売る場所をひとつに",
+            "body": "InstagramやFacebook、Amazon・楽天などの外部モール、実店舗のレジまで、在庫と注文をまとめて管理できます。"
+          }
+        },
+        "feature_4": {
+          "type": "feature",
+          "settings": {
+            "title": "海外へ売るのに強い",
+            "body": "多言語・多通貨の表示や、海外向けの決済と配送が標準で整っています。"
+          }
+        },
+        "feature_5": {
+          "type": "feature",
+          "settings": {
+            "title": "AIのアシスタント",
+            "body": "管理画面のAIアシスタント「Sidekick」に話しかけて、商品説明づくりや設定の手伝いを頼めます。"
+          }
+        }
+      },
+      "block_order": [
+        "feature_1",
+        "feature_2",
+        "feature_3",
+        "feature_4",
+        "feature_5"
+      ]
+    },
+    "clp_cards": {
+      "type": "clp-cards",
+      "settings": {
+        "heading": "こんなお店に、ぴったりです。"
+      },
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "title": "BASEやカラーミーで売っている",
+            "body": "商品や顧客の情報を引き継いで、お店を止めずにShopifyへ移します。定期便や海外販売も、あとから足せます。"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "title": "WordPressやEC-CUBEで売っている",
+            "body": "PHPやプラグインの更新、サーバーの管理から手が離れます。セキュリティの考え方は下で詳しく書いています。"
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "title": "海外のお客さんにも売りたい",
+            "body": "越境ECに対応します。円とドルなどで値段を表示し、英語をはじめ多言語のページと、海外への送料を整えます。以前ベトナムで海外営業をしていた経験も生かします。"
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "title": "Instagramで注文を受けている",
+            "body": "DMでのやりとりを、カートと決済のあるお店に置きかえます。投稿から商品ページへ、そのまま進めるようにします。"
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4"
+      ]
+    },
+    "clp_works": {
+      "type": "clp-works",
+      "settings": {
+        "heading": "これまでに作ったお店。"
+      },
+      "blocks": {
+        "work_1": {
+          "type": "work",
+          "settings": {
+            "kind": "抹茶のオンラインストア",
+            "name": "NEKOHAMA",
+            "body": "招き猫のロゴと抹茶の色を活かし、円とドルの両方で買える作りにしました。立ち上げから運営まで担当しています。",
+            "details": "多通貨の表示と海外配送　／　Shopify Flowで在庫アラートと顧客の自動分類　／　Matrixifyで商品を一括登録",
+            "image_src": "https://chofu-shopify-support-7e1k.vercel.app/works/nekohama.jpg",
+            "wide": true,
+            "dark": false
+          }
+        },
+        "work_2": {
+          "type": "work",
+          "settings": {
+            "kind": "ドライフラワーのオンラインストア",
+            "name": "Fleur Sereine",
+            "body": "ブーケやリースの写真が主役になるよう、文字と飾りを控えた落ち着いた作りにしました。",
+            "details": "商品写真を大きく見せるトップページ　／　ブーケ・リース・スワッグの分類",
+            "image_src": "https://chofu-shopify-support-7e1k.vercel.app/works/fleur.jpg",
+            "wide": false,
+            "dark": false
+          }
+        },
+        "work_3": {
+          "type": "work",
+          "settings": {
+            "kind": "クラシック映画DVDのストア",
+            "name": "Univasal DVD Classic",
+            "body": "日本語字幕付きの名作を扱うお店です。濃紺と金色で、昔の映画館のような雰囲気に仕上げました。",
+            "details": "Dawnテーマをもとにデザインを調整",
+            "image_src": "",
+            "wide": false,
+            "dark": true
+          }
+        }
+      },
+      "block_order": [
+        "work_1",
+        "work_2",
+        "work_3"
+      ]
+    },
+    "clp_security": {
+      "type": "clp-security",
+      "settings": {
+        "image_src": "https://chofu-shopify-support-7e1k.vercel.app/works/brick.jpg",
+        "image_alt": "赤いレンガを積み上げた、がっしりとした壁",
+        "heading": "サイバー攻撃への備えに、\n投資を続けるShopifyへ。",
+        "lead": "WordPressやEC-CUBEのように自分でサーバーを持つお店は、PHPやプラグインの更新を続けないと、脆弱性をねらわれることがあります。Shopifyなら、サーバーの管理や更新はShopify側が行います。",
+        "note": "追加したアプリや管理画面のパスワードの扱いは、お店側の責任として残ります。引っ越しのときに、二段階認証などお店側でできる対策も一緒に整えます。",
+        "source": "出典：Shopifyのバグ報奨金ページ、累計100万ドル到達時のShopify Engineeringの発表"
+      },
+      "blocks": {
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "label": "弱点を見つけた研究者への報奨金",
+            "value": "最高20万ドル",
+            "sub": ""
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "label": "HackerOneの公開プログラム176件のうち",
+            "value": "5番目",
+            "sub": "に累計100万ドルの支払いへ到達"
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "label": "決済まわりの安全基準",
+            "value": "PCI DSS",
+            "sub": "カード業界の国際基準に対応"
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3"
+      ]
+    },
+    "clp_services": {
+      "type": "clp-services",
+      "settings": {
+        "heading": "お手伝いできること。"
+      },
+      "blocks": {
+        "group_1": {
+          "type": "group",
+          "settings": {
+            "title": "つくる",
+            "items": "新しいお店の立ち上げ\nデザイン・商品登録・決済と送料の設定\nスマホで買いやすい商品ページ"
+          }
+        },
+        "group_2": {
+          "type": "group",
+          "settings": {
+            "title": "引っ越す",
+            "items": "BASE・カラーミー・STORESから\nWordPress・EC-CUBEから\n商品と顧客の情報を引き継ぎ"
+          }
+        },
+        "group_3": {
+          "type": "group",
+          "settings": {
+            "title": "海外へ売る",
+            "items": "円・ドルなど多通貨での表示\n英語など多言語のページづくり\n海外配送と国ごとの送料の設定"
+          }
+        },
+        "group_4": {
+          "type": "group",
+          "settings": {
+            "title": "続ける",
+            "items": "新商品の登録や特集の差し替え\nLINE・Instagram・TikTok・Googleとの連携\nGA4とShopifyの数字を見た改善"
+          }
+        }
+      },
+      "block_order": [
+        "group_1",
+        "group_2",
+        "group_3",
+        "group_4"
+      ]
+    },
+    "clp_price": {
+      "type": "clp-price",
+      "settings": {
+        "heading": "料金。",
+        "lead": "ただいま開業記念価格でお受けしています（先着3件）。金額は税別で、Shopifyの月額料金やアプリ代は別にかかります。"
+      },
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": {
+            "name": "ショップ診断（直したほうがいい所を3つ）",
+            "price": "無料",
+            "regular": ""
+          }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "name": "スポット相談（1時間）",
+            "price": "3,300円",
+            "regular": ""
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "name": "ちょっとした修正（1回）",
+            "price": "3,300円〜",
+            "regular": ""
+          }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": {
+            "name": "ほかのカートからの引っ越し",
+            "price": "30,000円〜",
+            "regular": ""
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "name": "はじめての開店（テーマを活かしてシンプルに）",
+            "price": "50,000円〜",
+            "regular": "通常 80,000円〜"
+          }
+        },
+        "row_6": {
+          "type": "row",
+          "settings": {
+            "name": "しっかり作る（デザイン調整を含む）",
+            "price": "120,000円〜",
+            "regular": "通常 150,000円〜"
+          }
+        },
+        "row_7": {
+          "type": "row",
+          "settings": {
+            "name": "ライトサポート（修正・商品追加・ご相談）",
+            "price": "月5,000円",
+            "regular": ""
+          }
+        },
+        "row_8": {
+          "type": "row",
+          "settings": {
+            "name": "しっかりサポート（特集の更新・売上を見ながら改善）",
+            "price": "月10,000円〜",
+            "regular": "通常 月20,000円〜"
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6",
+        "row_7",
+        "row_8"
+      ]
+    },
+    "clp_steps": {
+      "type": "clp-steps",
+      "settings": {
+        "heading": "お願いするときの流れ。"
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "URLを送る",
+            "body": "お店かSNSのURLと、気になっていることをメールかLINEで送ってください。"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "診断票が届く",
+            "body": "直したほうがいい所を3つ、文章でお返しします。ここまで無料です。"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "話してみる",
+            "body": "続けて相談したい方とは、15分ほどお話しします。調布・世田谷・川崎なら伺います。"
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "つくる",
+            "body": "進め方とお見積もりをお送りし、ご依頼いただいてから制作を始めます。"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ]
+    },
+    "clp_about": {
+      "type": "clp-about",
+      "settings": {
+        "name": "鹿野将広",
+        "meta": "東京都調布市在住　／　Shopifyパートナー登録済み",
+        "body": "<p>抹茶のオンラインストア「NEKOHAMA」で、立ち上げから運営までを担当してきました。提案書と要件の整理から、構築、決済・多通貨・海外配送の設定、公開前の確認、公開までの進行管理まで、自分の手で進めています。</p><p>公開後は受注やお客さま対応をしながら、GA4とShopifyの数字を見て改善してきました。固定費と変動費を分けて損益分岐点を確かめるなど、お店の数字を一緒に見ながら、無理なく続けられる運営を考えます。</p><p>Shopifyのパートナープログラムに登録していて、お店の制作や運用のお手伝いを仕事としてお受けしています。制作はパートナー用の開発ストアで進めるので、公開するまでお店の費用はかかりません。</p><p>以前は、東南アジアのベトナムで海外営業をしていました。海外のお客さんに向けたお店づくりも、ご相談ください。</p><p>制作中は毎週、進み具合をご報告します。</p>",
+        "link_label": "書いたコードをGitHubで見る",
+        "link_url": "https://github.com/masahiro413"
+      }
+    },
+    "clp_faq": {
+      "type": "clp-faq",
+      "settings": {
+        "heading": "よくある質問。"
+      },
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "q": "パソコンが得意ではないのですが。",
+            "a": "大丈夫です。普段の操作はスマホでできるようにしてお渡しします。"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "q": "作るだけ、更新だけ、という頼み方もできますか。",
+            "a": "はい、どちらか一方だけでもお受けしています。"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "q": "Shopifyにすれば、セキュリティはもう心配いりませんか。",
+            "a": "サーバーと決済まわりはShopifyが守りますが、追加したアプリや管理画面のパスワードの扱いはお店側に残ります。二段階認証の設定など、お店側でできる対策も一緒に整えます。"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "q": "診断を頼んだら、依頼しないといけませんか。",
+            "a": "いいえ。診断票を読んで、自分で直してもらっても大丈夫です。"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4"
+      ]
+    },
+    "clp_contact": {
+      "type": "clp-contact",
+      "settings": {
+        "image_src": "https://chofu-shopify-support-7e1k.vercel.app/works/forest.jpg",
+        "image_alt": "苔の緑が広がる、木漏れ日の森",
+        "heading": "まずは、お店のURLを。",
+        "lead": "直したほうがいい所を3つ、診断票にしてお返しします。1日以内にお返事します。LINEなら、URLを送るだけで大丈夫です。",
+        "btn1_label": "無料診断を申し込む",
+        "btn1_url": "mailto:masahirokano503@gmail.com?subject=%E7%84%A1%E6%96%99%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97%E8%A8%BA%E6%96%AD%E3%81%AE%E7%94%B3%E3%81%97%E8%BE%BC%E3%81%BF",
+        "btn2_label": "LINEで相談する",
+        "btn2_url": "https://lin.ee/7KMHHYB",
+        "note": "ボタンが開かないときは：masahirokano503@gmail.com\nLINE公式アカウント ID：@827bzpuz"
+      }
+    }
+  },
+  "order": [
+    "clp_hero",
+    "clp_shopify",
+    "clp_cards",
+    "clp_works",
+    "clp_security",
+    "clp_services",
+    "clp_price",
+    "clp_steps",
+    "clp_about",
+    "clp_faq",
+    "clp_contact"
+  ]
+}

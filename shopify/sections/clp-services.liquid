@@ -1,0 +1,46 @@
+<div class="clp">
+<section class="bg-white px-5 py-24 text-[#1d1d1f] sm:py-32">
+  <h2 class="text-center text-3xl font-semibold sm:text-5xl">{{ section.settings.heading }}</h2>
+  <div class="mx-auto mt-16 grid max-w-[1024px] gap-12 text-center sm:grid-cols-2 lg:grid-cols-4">
+    {%- for block in section.blocks -%}<div {{ block.shopify_attributes }}><h3 class="text-2xl font-semibold">{{ block.settings.title }}</h3><p class="mt-4 leading-loose text-[#6e6e73]">{{ block.settings.items | newline_to_br }}</p></div>{%- endfor -%}
+  </div>
+</section>
+</div>
+
+{% schema %}
+{
+  "name": "LP：できること",
+  "tag": "section",
+  "class": "clp-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "見出し"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "group",
+      "name": "グループ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "タイトル"
+        },
+        {
+          "type": "textarea",
+          "id": "items",
+          "label": "項目（1行に1つ）"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LP：できること"
+    }
+  ]
+}
+{% endschema %}

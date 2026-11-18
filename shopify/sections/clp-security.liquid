@@ -1,0 +1,87 @@
+<div class="clp">
+{%- if section.settings.image != blank -%}{%- assign img = section.settings.image | image_url: width: 2000 -%}{%- else -%}{%- assign img = section.settings.image_src -%}{%- endif -%}
+<section id="security" class="bg-black pt-24 pb-24 text-white sm:pt-32">
+  <div class="mx-auto max-w-3xl px-5 text-center"><h2 class="text-3xl font-semibold sm:text-5xl">{{ section.settings.heading | newline_to_br }}</h2><p class="mx-auto mt-5 max-w-2xl text-lg text-white/85">{{ section.settings.lead }}</p></div>
+  <div class="relative isolate mt-16 flex min-h-[90svh] items-center overflow-hidden">
+    {%- if img != blank -%}<img src="{{ img }}" alt="{{ section.settings.image_alt | escape }}" class="absolute inset-0 -z-10 size-full object-cover object-[50%_92%] brightness-110 contrast-110 saturate-150" loading="lazy">{%- endif -%}
+    <dl class="mx-auto grid w-full max-w-[1100px] gap-4 px-5 py-16 sm:grid-cols-3 sm:px-8">
+      {%- for block in section.blocks -%}<div class="rounded-2xl bg-black/55 px-6 py-8 text-center ring-1 ring-white/15 backdrop-blur-xl" {{ block.shopify_attributes }}><dt class="text-sm text-white/85">{{ block.settings.label }}</dt><dd class="mt-2 whitespace-nowrap text-4xl font-semibold text-[#95bf47]">{{ block.settings.value }}</dd>{%- if block.settings.sub != blank -%}<dd class="mt-2 text-sm text-white/85">{{ block.settings.sub }}</dd>{%- endif -%}</div>{%- endfor -%}
+    </dl>
+  </div>
+  <p class="mx-auto mt-14 max-w-2xl px-5 text-center text-white/85">{{ section.settings.note }}</p>
+  <p class="mx-auto mt-6 max-w-2xl px-5 text-center text-xs text-white/60">{{ section.settings.source }}</p>
+</section>
+</div>
+
+{% schema %}
+{
+  "name": "LP：セキュリティ",
+  "tag": "section",
+  "class": "clp-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "写真"
+    },
+    {
+      "type": "text",
+      "id": "image_src",
+      "label": "写真のURL（写真を選んでいないときに使用）"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "写真の説明"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "見出し"
+    },
+    {
+      "type": "textarea",
+      "id": "lead",
+      "label": "説明文"
+    },
+    {
+      "type": "textarea",
+      "id": "note",
+      "label": "補足"
+    },
+    {
+      "type": "text",
+      "id": "source",
+      "label": "出典"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "数字",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "説明"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "数字"
+        },
+        {
+          "type": "text",
+          "id": "sub",
+          "label": "補足（任意）"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LP：セキュリティ"
+    }
+  ]
+}
+{% endschema %}

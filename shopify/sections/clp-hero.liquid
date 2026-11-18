@@ -1,0 +1,147 @@
+<div class="clp">
+{%- if section.settings.image != blank -%}{%- assign img = section.settings.image | image_url: width: 2000 -%}{%- else -%}{%- assign img = section.settings.image_src -%}{%- endif -%}
+<section id="top" class="relative isolate overflow-hidden bg-black px-5 pt-28 pb-24 text-center text-white sm:pt-36">
+  <div aria-hidden="true" class="absolute inset-x-0 top-0 -z-10 h-[56rem]">
+    {%- if img != blank -%}<img src="{{ img }}" alt="" class="size-full object-cover brightness-110 contrast-110 saturate-150" loading="eager" fetchpriority="high">{%- endif -%}
+    <div class="absolute inset-0 bg-black/45"></div><div class="absolute inset-0 bg-linear-to-b from-black/30 via-transparent to-black"></div>
+  </div>
+  <p class="text-lg font-semibold drop-shadow-lg">{{ section.settings.eyebrow }}</p>
+  <h1 class="mt-4 text-[2rem] font-semibold leading-tight drop-shadow-lg min-[400px]:text-4xl sm:text-6xl lg:text-7xl">{{ section.settings.heading | newline_to_br }}</h1>
+  <p class="mx-auto mt-8 max-w-2xl text-lg drop-shadow-lg">{{ section.settings.lead }}</p>
+  <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+    {%- if section.settings.btn1_label != blank -%}<a href="{{ section.settings.btn1_url }}" class="inline-flex min-h-12 items-center justify-center rounded-full px-7 text-lg font-semibold bg-[#008060] text-white hover:bg-[#006e52]"{% if section.settings.btn1_url contains 'http' %} target="_blank" rel="noopener"{% endif %}>{{ section.settings.btn1_label }}</a>{%- endif -%}
+    {%- if section.settings.btn2_label != blank -%}<a href="{{ section.settings.btn2_url }}" class="inline-flex min-h-12 items-center justify-center rounded-full px-7 text-lg font-semibold border border-white/70 bg-black/35 text-white backdrop-blur-sm hover:bg-black/50"{% if section.settings.btn2_url contains 'http' %} target="_blank" rel="noopener"{% endif %}>{{ section.settings.btn2_label }}</a>{%- endif -%}
+  </div>
+  <p class="mt-5 text-sm text-white/90">{{ section.settings.note }}</p>
+  <figure class="mx-auto mt-20 max-w-xl text-left">
+    <div class="rounded-[28px] bg-white px-7 py-8 text-[#1d1d1f] shadow-2xl sm:px-10 sm:py-10">
+      <div class="flex items-baseline justify-between gap-4 border-b border-[#d2d2d7] pb-4"><p class="text-lg font-semibold">{{ section.settings.sheet_title }}</p><p class="text-sm text-[#86868b]">{{ section.settings.sheet_tag }}</p></div>
+      <p class="mt-4 text-sm text-[#6e6e73]">{{ section.settings.sheet_lead }}</p>
+      <ol class="mt-6 space-y-6">
+        {%- for block in section.blocks -%}
+        <li class="grid grid-cols-[1.75rem_1fr] gap-x-3" {{ block.shopify_attributes }}><span class="text-2xl font-semibold leading-none text-[#008060]">{{ forloop.index }}</span><div>
+          <p class="font-semibold leading-relaxed">{{ block.settings.issue }}</p>
+          <p class="mt-1 leading-relaxed text-[#6e6e73]">{{ block.settings.fix }}</p>
+          {%- if block.settings.note != blank -%}<p class="mt-2 font-semibold text-[#008060]">― {{ block.settings.note }}</p>{%- endif -%}
+        </div></li>
+        {%- endfor -%}
+      </ol>
+      <p class="mt-8 border-t border-[#d2d2d7] pt-4 text-right text-sm text-[#6e6e73]">{{ section.settings.sheet_sign }}</p>
+    </div>
+    <figcaption class="mt-5 text-center text-sm text-[#a1a1a6]">{{ section.settings.sheet_caption }}</figcaption>
+  </figure>
+</section>
+</div>
+
+{% schema %}
+{
+  "name": "LP：最初の画面",
+  "tag": "section",
+  "class": "clp-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "写真"
+    },
+    {
+      "type": "text",
+      "id": "image_src",
+      "label": "写真のURL（写真を選んでいないときに使用）"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "小見出し"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "見出し（改行できます）"
+    },
+    {
+      "type": "textarea",
+      "id": "lead",
+      "label": "説明文"
+    },
+    {
+      "type": "text",
+      "id": "btn1_label",
+      "label": "ボタン1の文字"
+    },
+    {
+      "type": "text",
+      "id": "btn1_url",
+      "label": "ボタン1のリンク"
+    },
+    {
+      "type": "text",
+      "id": "btn2_label",
+      "label": "ボタン2の文字"
+    },
+    {
+      "type": "text",
+      "id": "btn2_url",
+      "label": "ボタン2のリンク"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "ボタン下の小さな文字"
+    },
+    {
+      "type": "text",
+      "id": "sheet_title",
+      "label": "診断票のタイトル"
+    },
+    {
+      "type": "text",
+      "id": "sheet_tag",
+      "label": "診断票の右上"
+    },
+    {
+      "type": "text",
+      "id": "sheet_lead",
+      "label": "診断票の説明"
+    },
+    {
+      "type": "text",
+      "id": "sheet_sign",
+      "label": "診断票の署名"
+    },
+    {
+      "type": "text",
+      "id": "sheet_caption",
+      "label": "診断票の下の文字"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "finding",
+      "name": "診断の項目",
+      "settings": [
+        {
+          "type": "text",
+          "id": "issue",
+          "label": "気づいた点"
+        },
+        {
+          "type": "textarea",
+          "id": "fix",
+          "label": "直し方"
+        },
+        {
+          "type": "text",
+          "id": "note",
+          "label": "ひとこと（任意）"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LP：最初の画面"
+    }
+  ]
+}
+{% endschema %}
