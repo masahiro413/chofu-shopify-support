@@ -180,6 +180,13 @@ const steps = [
   },
 ];
 
+const tools = [
+  { name: "Shopify", use: "お店づくり（パートナー登録済み）" },
+  { name: "Figma", use: "デザインの確認" },
+  { name: "Claude", use: "コードを書く・文章を整える" },
+  { name: "LINE公式アカウント", use: "お客さまとのやり取り" },
+];
+
 const faqs = [
   {
     q: "パソコンが得意ではないのですが。",
@@ -669,7 +676,20 @@ export default function Home() {
             </p>
             <p>制作中は毎週、進み具合をご報告します。</p>
           </div>
-          <p className="mt-8 text-center">
+          <div className="mt-12">
+            <h3 className="text-center text-xl font-semibold">
+              使っているツール
+            </h3>
+            <dl className="mt-6 grid gap-3 sm:grid-cols-2">
+              {tools.map((tool) => (
+                <div key={tool.name} className="rounded-2xl bg-white px-6 py-5">
+                  <dt className="text-lg font-semibold">{tool.name}</dt>
+                  <dd className="mt-1 text-ink-soft">{tool.use}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+          <p className="mt-10 text-center">
             <a
               href={GITHUB_URL}
               target="_blank"
